@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ESLint Ignore File
 
 # Ignore build output
@@ -8,4 +9,16 @@ node_modules/
 next.config.js
 postcss.config.js
 stylelint.config.js
+=======
+# ESLint Ignore File
+
+# Ignore build output
+.next/
+node_modules/
+
+# Ignore configuration files
+next.config.js
+postcss.config.js
+stylelint.config.js
+>>>>>>> c21d114d040fca538eb934b093541aa79b631438
 tailwind.config.js
