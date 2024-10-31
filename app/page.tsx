@@ -1,22 +1,21 @@
 "use client";
-import React, {useState} from "react";
-import { useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 
 // Custom hook to run an effect only once
 const useEffectOnce = (effect: React.EffectCallback) => {
-    useEffect(effect, []);
+  useEffect(effect, []);
 };
 
 // Custom hook for adding event listeners
 const useEventListener = (eventName: string, handler: (event: Event) => void) => {
-    const savedHandler = useCallback(handler, [handler]);
+  const savedHandler = useCallback(handler, [handler]);
 
-    useEffect(() => {
-        window.addEventListener(eventName, savedHandler);
-        return () => {
-            window.removeEventListener(eventName, savedHandler);
-        };
-    }, [eventName, savedHandler]);
+  useEffect(() => {
+    window.addEventListener(eventName, savedHandler);
+    return () => {
+      window.removeEventListener(eventName, savedHandler);
+    };
+  }, [eventName, savedHandler]);
 };
 
 import PreLoader from "./components/other/PreLoader";
@@ -35,59 +34,59 @@ import Tools from "./sections/Tools.tsx";
 
 export default function Home() {
 
-    const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-    useEffectOnce(() => {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-        });
-        setIsMobile(window.innerWidth < 768);
+  useEffectOnce(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
     });
+    setIsMobile(window.innerWidth < 768);
+  });
 
-    useEventListener('resize', () => {
-        setIsMobile(window.innerWidth < 768);
-    });
+  useEventListener('resize', () => {
+    setIsMobile(window.innerWidth < 768);
+  });
 
-    useBlobity(
-        {
-            licenseKey: "opensource",
-            focusableElementsOffsetX: 4,
-            focusableElementsOffsetY: 4,
-            color: "#ffffff",
-            dotColor: "#ffffff",
-            invert: true,
-            focusableElements:
+  useBlobity(
+    {
+      licenseKey: "opensource",
+      focusableElementsOffsetX: 4,
+      focusableElementsOffsetY: 4,
+      color: "#ffffff",
+      dotColor: "#ffffff",
+      invert: true,
+      focusableElements:
                 "[data-blobity], a:not([data-no-blobity]), h4:not([data-no-blobity]), li:not([data-no-blobity]), button:not([data-no-blobity]), [data-blobity-tooltip]",
-            font: "'Inter', sans-serif",
-            fontSize: 16,
-            fontWeight: 900,
-            opacity: 1.0,
-            fontColor: "#ffffff",
-            zIndex: 35,
-            size: 50,
-            radius: 5,
-            magnetic: false,
-        }
-    );
+      font: "'Inter', sans-serif",
+      fontSize: 16,
+      fontWeight: 900,
+      opacity: 1.0,
+      fontColor: "#ffffff",
+      zIndex: 35,
+      size: 50,
+      radius: 5,
+      magnetic: false,
+    }
+  );
 
-    return (
-        <>
-            <PreLoader />
-            <Blur />
-            <Color />
-            <NavBar />
-            <main
-                className="flex flex-col items-center justify-center bg-black"
-            >
-                <Hero />
-                <About />
-                <Work />
-                <Tools />
-                <Contact />
-                <Footer />
-            </main>
+  return (
+    <>
+      <PreLoader />
+      <Blur />
+      <Color />
+      <NavBar />
+      <main
+        className="flex flex-col items-center justify-center bg-black"
+      >
+        <Hero />
+        <About />
+        <Work />
+        <Tools />
+        <Contact />
+        <Footer />
+      </main>
             
-        </>
-    );
+    </>
+  );
 }

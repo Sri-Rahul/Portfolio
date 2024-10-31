@@ -1,0 +1,11 @@
+# ESLint Ignore File
+
+# Ignore build output
+.next/
+node_modules/
+
+# Ignore configuration files
+next.config.js
+postcss.config.js
+stylelint.config.js
+tailwind.config.js

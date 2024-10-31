@@ -11,21 +11,21 @@ type AnimatedToolsProps = {
 };
 
 const AnimatedTools: React.FC<AnimatedToolsProps> = ({
-    delay,
-    stepSize,
-    children,
-    iconSize,
-    className,
+  delay,
+  stepSize,
+  children,
+  iconSize,
+  className,
 }) => {
-    return (
-        <div className={className}>
-            {children.map((child, index) => (
-                <Animated key={index} delay={delay + index * stepSize}>
-                    {cloneElement(child, { size: iconSize })}
-                </Animated>
-            ))}
-        </div>
-    );
+  return (
+    <div className={className}>
+      {children.map((child, index) => (
+        <Animated key={index} delay={delay + index * stepSize}>
+          {cloneElement(child, { size: iconSize })}
+        </Animated>
+      ))}
+    </div>
+  );
 };
 
 export default AnimatedTools;
