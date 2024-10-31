@@ -34,8 +34,8 @@ Follow these steps to set up the project locally:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/portfolio-template-main.git
-   cd portfolio-template-main
+   git clone https://github.com/Sri-Rahul/Portfolio.git
+   cd Portfolio
    ```
 
 2. **Install Dependencies**
@@ -97,6 +97,6 @@ Contributions are welcome! Please follow these steps:
 
 - **GitHub:** @Sri-Rahul
 - **LinkedIn:** [My LinkedIn Profile](https://www.linkedin.com/in/sri-rahul-n/)
-- **Website:** https://www.yourwebsite.com
+- **Website:** [Check it out!](https://srirahul.netlify.app/)
 
 Feel free to reach out for collaborations, feedback, or inquiries!
