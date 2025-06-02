@@ -1,5 +1,6 @@
 // app/layout.tsx
 import "./globals.css";
+import "./marquee.css";
 import React, { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";

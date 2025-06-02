@@ -29,6 +29,8 @@ const nextConfig = {
         // pathname: "/**",
       },
     ],
+    domains: ['localhost'],
+    unoptimized: true,
   },
   productionBrowserSourceMaps: isProduction,
 };

@@ -7,11 +7,20 @@ import {
   SiScikitlearn,
   SiPandas,
   SiNumpy,
+  SiReact,
+  SiTypescript,
+  SiNextdotjs,
+  SiMongodb,
+  SiTailwindcss,
+  SiNetlify,
+  SiNodedotjs,
+  SiExpress,
 } from "react-icons/si";
 import { FaRegSmile, FaFileExcel } from "react-icons/fa";
 import { BsLink45Deg } from "react-icons/bs"; // Ensure correct import
-import { FaChartBar } from "react-icons/fa"; // Ensure correct import
+import { FaChartBar, FaFileAlt } from "react-icons/fa"; // Ensure correct import
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { TbApi } from "react-icons/tb";
 export type ProjectProps = {
     id: number;
     name: string;
@@ -19,10 +28,11 @@ export type ProjectProps = {
     technologies: IconType[];
     techNames: string[];
     techLinks: string[];
-    github: string;
+    github?: string;
     demo?: string;
     image: string;
     available: boolean;
+    publication?: string; // IEEE publication link
 };
 
 export const projects: ProjectProps[] = [
@@ -51,7 +61,7 @@ export const projects: ProjectProps[] = [
     //demo: "https://www.automatedshopping.com/demo",
     image: "/projects/automated-shopping.png",
     available: true,
-    github: ""
+    publication: undefined
   },
   {
     id: 1,
@@ -83,5 +93,64 @@ export const projects: ProjectProps[] = [
     //demo: "https://roadaccidentseveritydemo.netlify.app/",
     image: "/projects/road-accident-severity.png",
     available: true,
+    publication: "https://ieeexplore.ieee.org/document/10962895"
+  },
+  {
+    id: 2,
+    name: "Salary Predictor",
+    description: "ML-powered web app that predicts starting salaries based on academic background, skills, and personality traits using CatBoost and XGBoost models with 98.21% R² Score.",
+    technologies: [SiReact, SiTypescript, SiNextdotjs, SiFlask, SiPython, SiScikitlearn, TbApi],
+    techNames: [
+      "React.js",
+      "TypeScript", 
+      "Next.js",
+      "Flask",
+      "Python",
+      "Machine Learning",
+      "API Development"
+    ],
+    techLinks: [
+      "https://reactjs.org/",
+      "https://www.typescriptlang.org/",
+      "https://nextjs.org/",
+      "https://flask.palletsprojects.com/",
+      "https://www.python.org/",
+      "https://scikit-learn.org/",
+      "https://flask.palletsprojects.com/"
+    ],
+    github: "https://github.com/Sri-Rahul/Salary_Predictor",
+    demo: "https://salarypredictor.netlify.app/",
+    image: "/projects/salaryprd.png",
+    available: true,
+    publication: undefined
+  },
+  {
+    id: 3,
+    name: "Link Analytics Dashboard",
+    description: "Full-stack URL shortener with custom aliases, QR codes, JWT authentication, and comprehensive analytics dashboard.",
+    technologies: [SiNextdotjs, SiMongodb, SiTailwindcss, SiNodedotjs, SiExpress, SiNetlify, FaChartBar],
+    techNames: [
+      "Next.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "Netlify",
+      "Analytics"
+    ],
+    techLinks: [
+      "https://nextjs.org/",
+      "https://www.mongodb.com/",
+      "https://tailwindcss.com/",
+      "https://nodejs.org/",
+      "https://expressjs.com/",
+      "https://www.netlify.com/",
+      "https://recharts.org/"
+    ],
+    github: "https://github.com/Sri-Rahul/linkanalysis",
+    demo: "https://advanced-url-shortner.netlify.app/home",
+    image: "/projects/linksht.png",
+    available: true,
+    publication: undefined
   },
 ];

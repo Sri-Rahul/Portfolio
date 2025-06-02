@@ -2,6 +2,8 @@ import React from "react";
 import "../animations/animate.css";
 import AnimatedBody from "../animations/AnimatedBody";
 import AnimatedTitle from "../animations/AnimatedTitle";
+import { InlineMarquee } from "../components/eldoraui/inline-marquee";
+import Image from "next/image";
 import {
   SiJavascript,
   SiTypescript,
@@ -38,6 +40,34 @@ import {
 import AnimatedTools from "../animations/AnimatedTools";
 
 const Tools = () => {
+  // Certification companies data
+  const certificationProviders = [
+    {
+      name: "Google",
+      url: "https://res.cloudinary.com/eldoraui/image/upload/v1734066341/Google_fav2wl.svg",
+    },
+    {
+      name: "Coursera",
+      url: "/projects/coursera.svg",
+    },
+    {
+      name: "AWS",
+      url: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    },
+    {
+      name: "Google Cloud",
+      url: "https://cloud.google.com/_static/cloud/images/cloud-logo.svg",
+    },
+    {
+      name: "Cisco Networking Academy",
+      url: "/projects/cisco.svg",
+    },
+    {
+      name: "Future Learn",
+      url: "/projects/futurelearn.png",
+    },
+  ];
+
   return (
     <section
       className="relative z-10 w-full items-center justify-center overflow-hidden bg-[#0E1016] bg-cover bg-center pt-16 pb-36 md:pt-20 md:pb-44 lg:pt-20 lg:pb-56"
@@ -147,6 +177,36 @@ const Tools = () => {
             </div>
           </div>
 
+        </div>
+
+        {/* New Certifications Section */}
+        <div className="mx-auto w-full lg:max-w-[1200px] mt-20">
+          <div className="relative">
+            <div className="text-center mb-8">
+              <h3 className="text-lg font-semibold text-[#e4ded7] opacity-70 uppercase tracking-wider">
+                My Professional Certifications are from
+              </h3>
+            </div>
+            
+            <div className="relative">
+              <InlineMarquee className="max-w-full" speed={20}>
+                {certificationProviders.map((provider, idx) => (
+                  <Image
+                    key={idx}
+                    width={140}
+                    height={50}
+                    src={provider.url}
+                    className="h-12 w-35 opacity-60 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300 dark:brightness-0 dark:invert flex-shrink-0"
+                    alt={`${provider.name} Certification`}
+                  />
+                ))}
+              </InlineMarquee>
+              
+              {/* Gradient overlays for smooth fade effect */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/4 bg-gradient-to-r from-[#0E1016] to-transparent"></div>
+              <div className="pointer-events-none absolute inset-y-0 right-0 h-full w-1/4 bg-gradient-to-l from-[#0E1016] to-transparent"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
