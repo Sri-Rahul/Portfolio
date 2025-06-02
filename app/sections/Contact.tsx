@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Inter } from 'next/font/google';
+import { Inter } from "next/font/google";
 import "../animations/animate.css";
 import AnimatedBody from "../animations/AnimatedBody.tsx";
 import AnimatedTitle from "../animations/AnimatedTitle.tsx";
@@ -8,12 +8,12 @@ import { motion } from "framer-motion";
 import ContactBackground from "../components/background/ContactBackground.tsx";
 import React from "react";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 const Contact = () => {
   return (
     <motion.section
-      className="relative z-10 flex h-[85vh] w-full items-center justify-center overflow-hidden py-16 md:h-[80vh] md:py-20 lg:h-[90vh] lg:pt-0 lg:pb-28"
+      className="relative z-10 flex h-[85vh] w-full items-center justify-center overflow-hidden py-16 md:h-[80vh] md:py-20 lg:h-[90vh] lg:pb-28 lg:pt-0"
       id="contact"
       initial="initial"
       animate="animate"
@@ -34,9 +34,7 @@ const Contact = () => {
         <div className="mt-20 flex w-full flex-col items-end justify-center gap-16 sm:mt-32 sm:gap-12 md:mt-40 md:flex-row md:items-start md:justify-between lg:mt-12 lg:max-w-[1440px]">
           <div className=" flex w-[350px] max-w-[90%] flex-col items-end text-right text-[14px] font-semibold uppercase text-[#e4ded7] sm:w-[350px] sm:text-[14px] md:w-[310px] md:items-start md:text-left md:text-[16px] lg:w-[420px] lg:text-[16px]">
             <AnimatedBody
-              text={
-                "Contact me via mail"
-              }
+              text={"Contact me via mail"}
               className={
                 "-mb-1 inline-block overflow-hidden pt-1 sm:-mb-2 md:-mb-3 lg:-mb-4"
               }
@@ -80,7 +78,6 @@ const Contact = () => {
                 charSpace={"mr-[0.01em]"}
               />
             </Link>
-                       
           </div>
         </div>
       </div>

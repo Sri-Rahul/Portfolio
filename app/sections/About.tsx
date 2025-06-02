@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "../animations/animate.css";
 import AnimatedTitle from "../animations/AnimatedTitle";
 import Particles from "../components/work/Particles";
@@ -7,13 +7,18 @@ import { GradualSpacing } from "../components/eldoraui/gradualspacing";
 const About = () => {
   return (
     <section
-      className="relative z-10 w-full items-center justify-center overflow-hidden bg-[#0E1016] bg-cover bg-center pt-16 pb-36 md:pt-20 md:pb-44 lg:pt-20 lg:pb-56"
+      className="relative z-10 w-full items-center justify-center overflow-hidden bg-[#0E1016] bg-cover bg-center pb-36 pt-16 md:pb-44 md:pt-20 lg:pb-56 lg:pt-20"
       id="about"
     >
       {/* Particles Background */}
-      <Particles className="absolute top-0 left-0 w-full h-full z-0" quantity={50} staticity={60} ease={60} />
+      <Particles
+        className="absolute left-0 top-0 z-0 h-full w-full"
+        quantity={50}
+        staticity={60}
+        ease={60}
+      />
 
-      <div className="mx-auto flex w-[90%] flex-col items-center justify-center lg:max-w-[1212.8px] z-10">
+      <div className="z-10 mx-auto flex w-[90%] flex-col items-center justify-center lg:max-w-[1212.8px]">
         <AnimatedTitle
           text={"Sri Rahul Namana."}
           className={
@@ -28,7 +33,7 @@ const About = () => {
             {/* Only keeping the first paragraph */}
             <GradualSpacing
               text="I am a versatile Computer Science professional from Vellore Institute of Technology, where I developed a strong foundation in software development and data structures. My unique blend of technical expertise and creative skills sets me apart - from developing machine learning models to crafting user experiences in Figma, I bring a holistic approach to technology solutions."
-              className="text-[#e4ded7] tracking-normal text-center text-[18px] md:text-[20px] lg:text-[24px] mx-auto"
+              className="mx-auto text-center text-[18px] tracking-normal text-[#e4ded7] md:text-[20px] lg:text-[24px]"
             />
           </div>
         </div>

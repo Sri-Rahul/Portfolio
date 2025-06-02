@@ -4,7 +4,6 @@ import HeroBackground from "../components/background/HeroBackground";
 import React from "react";
 import AnimatedTitle from "../animations/AnimatedTitle";
 
-
 const Hero = () => {
   return (
     <motion.section
@@ -17,7 +16,7 @@ const Hero = () => {
       <div className="mt-10 flex flex-col items-center justify-center sm:mt-0">
         <div
           className={`relative flex flex-col items-center justify-center ${inter.className} pointer-events-none`}
-        >                 
+        >
           <AnimatedTitle
             text={"Hi I'm Sri Rahul N"}
             className={
@@ -25,9 +24,8 @@ const Hero = () => {
             }
             wordSpace={"mr-[10px]"}
             charSpace={"mr-[0.001em]"}
-          />                  
+          />
         </div>
-                
       </div>
     </motion.section>
   );

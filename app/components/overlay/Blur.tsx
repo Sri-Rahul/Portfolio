@@ -14,7 +14,6 @@ const Blur = () => {
   };
 
   useEffect(() => {
-
     const handleScrollEvent = () => {
       handleScroll();
     };
@@ -28,7 +27,7 @@ const Blur = () => {
 
   return (
     <div
-      className={`fixed inset-0 p-1 w-full h-full backdrop-blur-[8px] pointer-events-none z-50 opacity-${scrollOpacity} overlay-mask`}
+      className={`pointer-events-none fixed inset-0 z-50 h-full w-full p-1 backdrop-blur-[8px] opacity-${scrollOpacity} overlay-mask`}
     />
   );
 };

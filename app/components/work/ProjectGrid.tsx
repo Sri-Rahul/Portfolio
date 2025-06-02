@@ -2,7 +2,6 @@ import React from "react";
 import ProjectCard from "./ProjectCard";
 import { projects, ProjectProps } from "./projectDetails"; // Ensure projectDetails.ts is in the same directory
 import { motion } from "framer-motion";
-import AnimatedBody from "../../animations/AnimatedBody";
 
 const ProjectGrid: React.FC = () => {
   // Animation variants for the project grid
@@ -12,32 +11,32 @@ const ProjectGrid: React.FC = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const projectVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 50,
-      scale: 0.95
+      scale: 0.95,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
         duration: 0.7,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
     <>
-      <motion.div 
-        className="grid w-full grid-cols-1 grid-rows-2 gap-y-10 gap-x-6 lg:max-w-[1200px] lg:grid-cols-1 mx-auto"
+      <motion.div
+        className="mx-auto grid w-full grid-cols-1 grid-rows-2 gap-x-6 gap-y-10 lg:max-w-[1200px] lg:grid-cols-1"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -47,9 +46,9 @@ const ProjectGrid: React.FC = () => {
           <motion.div
             key={project.id}
             variants={projectVariants}
-            whileHover={{ 
+            whileHover={{
               scale: 1.02,
-              transition: { duration: 0.3 }
+              transition: { duration: 0.3 },
             }}
           >
             <ProjectCard

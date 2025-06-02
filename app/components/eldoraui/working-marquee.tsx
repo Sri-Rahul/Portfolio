@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface WorkingMarqueeProps {
   children: React.ReactNode;
@@ -6,13 +6,17 @@ interface WorkingMarqueeProps {
   className?: string;
 }
 
-export function WorkingMarquee({ children, speed = 15, className = "" }: WorkingMarqueeProps) {
+export function WorkingMarquee({
+  children,
+  speed = 15,
+  className = "",
+}: WorkingMarqueeProps) {
   return (
     <div className={`overflow-hidden ${className}`}>
-      <div 
-        className="flex scroll-left whitespace-nowrap"
+      <div
+        className="scroll-left flex whitespace-nowrap"
         style={{
-          animationDuration: `${speed}s`
+          animationDuration: `${speed}s`,
         }}
       >
         {children}

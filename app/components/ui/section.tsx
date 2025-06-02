@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface SectionProps {
   title?: string;
@@ -11,10 +11,10 @@ const Section: React.FC<SectionProps> = ({
   title,
   subtitle,
   children,
-  className = '',
+  className = "",
 }) => {
   return (
-    <section className={`py-12 w-full ${className}`}>
+    <section className={`w-full py-12 ${className}`}>
       {(title || subtitle) && (
         <div className="mb-10 text-center">
           {title && (
@@ -23,7 +23,7 @@ const Section: React.FC<SectionProps> = ({
             </h2>
           )}
           {subtitle && (
-            <p className="mt-4 max-w-3xl mx-auto text-base md:text-lg text-[#e4ded7]/80">
+            <p className="mx-auto mt-4 max-w-3xl text-base text-[#e4ded7]/80 md:text-lg">
               {subtitle}
             </p>
           )}

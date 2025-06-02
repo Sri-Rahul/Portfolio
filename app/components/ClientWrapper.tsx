@@ -12,10 +12,10 @@ const ClientWrapper: React.FC = () => {
       window.scrollTo({
         top: 0,
         left: 0,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     } catch (error) {
-      console.error('Error scrolling to top:', error);
+      console.error("Error scrolling to top:", error);
     }
   }, []);
 
@@ -26,14 +26,14 @@ const ClientWrapper: React.FC = () => {
     };
 
     // Add event listener
-    window.addEventListener('resize', handleResize);
-        
+    window.addEventListener("resize", handleResize);
+
     // Set initial value immediately
     handleResize();
 
     // Cleanup event listener
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []); // Empty dependency array ensures this runs only on mount
 
@@ -43,7 +43,7 @@ const ClientWrapper: React.FC = () => {
     dotColor: "#ffffff",
     invert: true,
     focusableElements:
-            "[data-blobity], a:not([data-no-blobity]), h4:not([data-no-blobity]), li:not([data-no-blobity]), button:not([data-no-blobity]), [data-blobity-tooltip]",
+      "[data-blobity], a:not([data-no-blobity]), h4:not([data-no-blobity]), li:not([data-no-blobity]), button:not([data-no-blobity]), [data-blobity-tooltip]",
     font: "'Inter', sans-serif",
     fontSize: 16,
     fontWeight: 900,
@@ -57,7 +57,7 @@ const ClientWrapper: React.FC = () => {
 
   // Optional: Log mobile state for debugging
   useEffect(() => {
-    console.log('Is Mobile:', isMobile);
+    console.log("Is Mobile:", isMobile);
   }, [isMobile]);
 
   return null; // No visual rendering

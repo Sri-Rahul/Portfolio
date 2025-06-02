@@ -28,12 +28,14 @@ export function Marquee({
           "flex-row": !vertical,
           "flex-col": vertical,
         },
-        className,
+        className
       )}
-      style={{
-        "--duration": "20s",
-        ...props.style,
-      } as React.CSSProperties}
+      style={
+        {
+          "--duration": "20s",
+          ...props.style,
+        } as React.CSSProperties
+      }
     >
       {Array(repeat)
         .fill(0)

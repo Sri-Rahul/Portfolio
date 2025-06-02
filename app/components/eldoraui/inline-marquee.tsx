@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 
 interface InlineMarqueeProps {
   children: React.ReactNode;
@@ -6,31 +6,35 @@ interface InlineMarqueeProps {
   className?: string;
 }
 
-export function InlineMarquee({ children, speed = 15, className = "" }: InlineMarqueeProps) {
+export function InlineMarquee({
+  children,
+  speed = 15,
+  className = "",
+}: InlineMarqueeProps) {
   const containerStyle: React.CSSProperties = {
-    overflow: 'hidden',
-    position: 'relative',
-    width: '100%'
+    overflow: "hidden",
+    position: "relative",
+    width: "100%",
   };
 
   const marqueeWrapperStyle: React.CSSProperties = {
-    display: 'flex',
+    display: "flex",
     animation: `seamlessMarquee ${speed}s linear infinite`,
-    width: 'max-content'
+    width: "max-content",
   };
 
   const contentStyle: React.CSSProperties = {
-    display: 'flex',
-    gap: '2rem',
-    paddingRight: '2rem'
+    display: "flex",
+    gap: "2rem",
+    paddingRight: "2rem",
   };
 
   // Inject the keyframes directly
-  React.useEffect(() => {
-    const styleId = 'seamless-marquee-keyframes';
+  useEffect(() => {
+    const styleId = "seamless-marquee-keyframes";
     // Check if style already exists to avoid duplicates
     if (!document.getElementById(styleId)) {
-      const style = document.createElement('style');
+      const style = document.createElement("style");
       style.id = styleId;
       style.textContent = `
         @keyframes seamlessMarquee {
@@ -49,12 +53,8 @@ export function InlineMarquee({ children, speed = 15, className = "" }: InlineMa
   return (
     <div className={className} style={containerStyle}>
       <div style={marqueeWrapperStyle}>
-        <div style={contentStyle}>
-          {children}
-        </div>
-        <div style={contentStyle}>
-          {children}
-        </div>
+        <div style={contentStyle}>{children}</div>
+        <div style={contentStyle}>{children}</div>
       </div>
     </div>
   );

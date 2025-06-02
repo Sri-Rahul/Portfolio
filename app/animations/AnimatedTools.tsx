@@ -1,13 +1,13 @@
-import React, {cloneElement} from "react";
+import React, { cloneElement } from "react";
 import { IconType } from "react-icons";
 import Animated from "./Animated"; // Replace with the correct path to the "Animated" component
 
 type AnimatedToolsProps = {
-    delay: number;
-    stepSize: number;
-    children: React.ReactElement<React.ComponentProps<IconType>>[];
-    iconSize: number;
-    className?: string;
+  delay: number;
+  stepSize: number;
+  children: React.ReactElement<React.ComponentProps<IconType>>[];
+  iconSize: number;
+  className?: string;
 };
 
 const AnimatedTools: React.FC<AnimatedToolsProps> = ({

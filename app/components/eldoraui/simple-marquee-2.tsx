@@ -14,11 +14,11 @@ export function SimpleMarquee({
   pauseOnHover = false,
 }: SimpleMarqueeProps) {
   return (
-    <div 
+    <div
       className={cn("marquee-container", className)}
       style={{ "--duration": `${speed}s` } as React.CSSProperties}
     >
-      <div 
+      <div
         className={cn(
           "marquee-content flex-shrink-0",
           pauseOnHover && "hover:animation-pause"
@@ -26,7 +26,7 @@ export function SimpleMarquee({
       >
         {children}
       </div>
-      <div 
+      <div
         className={cn(
           "marquee-content flex-shrink-0",
           pauseOnHover && "hover:animation-pause"

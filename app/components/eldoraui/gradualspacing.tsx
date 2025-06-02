@@ -17,20 +17,21 @@ export const GradualSpacing: React.FC<GradualSpacingProps> = ({
   };
 
   return (
-    <div className={clsx("flex flex-wrap justify-center mx-auto", className)}>
+    <div className={clsx("mx-auto flex flex-wrap justify-center", className)}>
       <AnimatePresence>
         {text.split("").map((char, i) => (
           <motion.span
-            key={i}            initial="hidden"
+            key={i}
+            initial="hidden"
             animate="visible"
             exit="hidden"
             variants={gradual}
             transition={{ duration: 0.15, delay: i * 0.02 }}
             className={clsx(
-              "text-center font-display font-medium",
+              "font-display text-center font-medium",
               "text-base sm:text-lg md:text-xl lg:text-2xl",
               "tracking-normal",
-              "leading-relaxed",
+              "leading-relaxed"
             )}
           >
             {char === " " ? <span>&nbsp;</span> : char}

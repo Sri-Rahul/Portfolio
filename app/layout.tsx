@@ -14,13 +14,13 @@ const syne = Inter({
 
 export const viewport: Viewport = {
   // colorScheme: 'dark',
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  title: 'Sri Rahul - Portfolio',
-  description: 'Portfolio of Sri Rahul',
+  title: "Sri Rahul - Portfolio",
+  description: "Portfolio of Sri Rahul",
   metadataBase: new URL("https://www.example.site"),
   generator: "Next.js",
   applicationName: "Portfolio",
@@ -91,9 +91,7 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={syne.className}>
-        {children}
-      </body>
+      <body className={syne.className}>{children}</body>
     </html>
   );
 }

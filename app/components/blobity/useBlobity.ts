@@ -6,7 +6,7 @@ const useBlobity = (options: Partial<Options> = {}) => {
 
   useEffect(() => {
     // Ensure this only runs on the client side
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       // Cleanup any existing instance
       if (instance.current) {
         try {
@@ -14,7 +14,7 @@ const useBlobity = (options: Partial<Options> = {}) => {
           // Assuming Blobity has a destroy method
           instance.current.destroy?.();
         } catch (error) {
-          console.error('Blobity destruction error:', error);
+          console.error("Blobity destruction error:", error);
         }
       }
 
@@ -25,7 +25,7 @@ const useBlobity = (options: Partial<Options> = {}) => {
           // Default options can be added here if needed
         });
       } catch (error) {
-        console.error('Blobity initialization error:', error);
+        console.error("Blobity initialization error:", error);
         instance.current = null;
       }
 
@@ -35,7 +35,7 @@ const useBlobity = (options: Partial<Options> = {}) => {
           try {
             instance.current.destroy?.();
           } catch (error) {
-            console.error('Blobity cleanup error:', error);
+            console.error("Blobity cleanup error:", error);
           }
           instance.current = null;
         }

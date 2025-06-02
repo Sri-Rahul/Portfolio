@@ -7,7 +7,6 @@
 // this is here for webpack to expose Blobity as window.Blobity
 import Blobity from "./Blobity";
 
-
 const autoStart = document.querySelector(
   'script[src^="https://cdn.blobity.dev/by.js"]'
 ) as HTMLScriptElement;
@@ -22,4 +21,4 @@ if (autoStart) {
   }
 }
 
-export {default} from "./Blobity";
+export { default } from "./Blobity";

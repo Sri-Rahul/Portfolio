@@ -8,7 +8,10 @@ interface LetterPullUpProps {
   className?: string;
 }
 
-export default function LetterPullUp({ text, className = "" }: LetterPullUpProps) {
+export default function LetterPullUp({
+  text,
+  className = "",
+}: LetterPullUpProps) {
   const letters = text.split("");
 
   const pullupVariant = {
@@ -18,13 +21,13 @@ export default function LetterPullUp({ text, className = "" }: LetterPullUpProps
       opacity: 1,
       transition: {
         delay: i * 0.05, // Delay each letter's animation by 0.05 seconds
-        duration: 0.5,    // Adjust duration for smoothness
+        duration: 0.5, // Adjust duration for smoothness
       },
     }),
   };
 
   return (
-    <div className={clsx("flex justify-center flex-wrap", className)}>
+    <div className={clsx("flex flex-wrap justify-center", className)}>
       {letters.map((letter, i) => (
         <motion.span
           key={i}
@@ -36,7 +39,7 @@ export default function LetterPullUp({ text, className = "" }: LetterPullUpProps
             "font-normal", // Normal font weight
             "text-base md:text-lg lg:text-xl xl:text-2xl", // Normal text sizes
             "tracking-normal", // Normal letter spacing
-            "leading-normal",  // Normal line height
+            "leading-normal", // Normal line height
             "block"
           )}
         >

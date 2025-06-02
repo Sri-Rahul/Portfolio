@@ -25,38 +25,36 @@ const ProjectCard = ({
 }: ProjectProps) => {
   // Animation variants for project card elements
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30 
+    hidden: {
+      opacity: 0,
+      y: 30,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
-
-
   const buttonVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0.8,
-      y: -10
+      y: -10,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       y: 0,
       transition: {
         duration: 0.4,
         ease: "easeOut",
-        delay: 0.4
-      }
-    }
+        delay: 0.4,
+      },
+    },
   };
 
   const techStackVariants = {
@@ -65,38 +63,38 @@ const ProjectCard = ({
       opacity: 1,
       transition: {
         delay: 0.6,
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const techItemVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 20,
-      scale: 0.8
+      scale: 0.8,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
         duration: 0.3,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
     <motion.div
-      className={`relative bg-cover bg-no-repeat bg-center z-10 h-[550px] w-full items-stretch justify-center py-0 sm:h-[700px] sm:w-[100%] md:h-[650px] md:w-[100%] lg:h-[500px]`}
+      className={`relative z-10 h-[550px] w-full items-stretch justify-center bg-cover bg-center bg-no-repeat py-0 sm:h-[700px] sm:w-[100%] md:h-[650px] md:w-[100%] lg:h-[500px]`}
       variants={cardVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      whileHover={{ 
+      whileHover={{
         y: -5,
-        transition: { duration: 0.3 }
+        transition: { duration: 0.3 },
       }}
     >
       <Container
@@ -135,7 +133,7 @@ const ProjectCard = ({
                   href={github}
                   target="_blank"
                   aria-label="Open GitHub Repository"
-                  className="rounded-full w-[43px] bg-white p-3 md:p-5 text-[20px] md:w-[65px] md:text-[24px] lg:w-[65px] lg:text-[28px]"
+                  className="w-[43px] rounded-full bg-white p-3 text-[20px] md:w-[65px] md:p-5 md:text-[24px] lg:w-[65px] lg:text-[28px]"
                   data-blobity
                   data-blobity-radius="35"
                   data-blobity-offset-x="4"
@@ -150,7 +148,7 @@ const ProjectCard = ({
                   href={demo}
                   target="_blank"
                   aria-label="Open Live Demo"
-                  className="w-[43px] rounded-full bg-white p-3 md:p-5 text-[20px] md:w-[65px] md:text-[24px] lg:w-[65px] lg:text-[28px]"
+                  className="w-[43px] rounded-full bg-white p-3 text-[20px] md:w-[65px] md:p-5 md:text-[24px] lg:w-[65px] lg:text-[28px]"
                   data-blobity
                   data-blobity-radius="35"
                   data-blobity-offset-x="4"
@@ -165,7 +163,7 @@ const ProjectCard = ({
                   href={publication}
                   target="_blank"
                   aria-label="View IEEE Publication"
-                  className="w-[43px] rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-3 md:p-5 text-[20px] md:w-[65px] md:text-[24px] lg:w-[65px] lg:text-[28px] text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="w-[43px] rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-3 text-[20px] text-white shadow-lg transition-all duration-300 hover:shadow-xl md:w-[65px] md:p-5 md:text-[24px] lg:w-[65px] lg:text-[28px]"
                   data-blobity
                   data-blobity-radius="35"
                   data-blobity-offset-x="4"
@@ -180,7 +178,7 @@ const ProjectCard = ({
             <div></div>
           )}
         </motion.div>
-        
+
         {/* Conference Paper Tag */}
         {publication && (
           <div
@@ -189,28 +187,28 @@ const ProjectCard = ({
             } z-30`}
           >
             <div className="relative">
-              <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-2xl border-2 border-white/20">
+              <div className="rounded-full border-2 border-white/20 bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 text-sm font-bold uppercase tracking-wider text-white shadow-2xl">
                 <div className="flex items-center gap-2">
                   <FaFileAlt className="text-[12px]" />
                   <span>IEEE Published</span>
                 </div>
               </div>
               {/* Animated glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-md opacity-50 animate-pulse -z-10"></div>
+              <div className="absolute inset-0 -z-10 animate-pulse rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-50 blur-md"></div>
             </div>
           </div>
         )}
         <motion.div
           className={`absolute text-white ${
             !(id % 2 === 0)
-              ? "right-0 top-32 mr-0 ml-10 md:right-0 md:ml-0 lg:right-0 lg:top-60 lg:mr-4"
+              ? "right-0 top-32 ml-10 mr-0 md:right-0 md:ml-0 lg:right-0 lg:top-60 lg:mr-4"
               : "left-10 top-32 ml-0 md:mr-12 lg:top-52 lg:ml-4"
           } mb-10 md:mb-16 lg:mb-14`}
           initial={{ opacity: 0, x: id % 2 === 0 ? -30 : 30 }}
-          whileInView={{ 
-            opacity: 1, 
+          whileInView={{
+            opacity: 1,
             x: 0,
-            transition: { duration: 0.7, delay: 0.3 }
+            transition: { duration: 0.7, delay: 0.3 },
           }}
           viewport={{ once: true }}
         >
@@ -228,22 +226,22 @@ const ProjectCard = ({
               "mt-4 w-[90%] max-w-[457px] text-[16px] font-semibold text-[#95979D]"
             }
           />
-          <motion.div 
-            className="mt-9 mb-9 grid grid-cols-5 gap-5 col-start-1 col-end-2"
+          <motion.div
+            className="col-start-1 col-end-2 mb-9 mt-9 grid grid-cols-5 gap-5"
             variants={techStackVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
             {technologies.map((IconComponent, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className={"relative"}
                 variants={techItemVariants}
-                whileHover={{ 
-                  scale: 1.2, 
+                whileHover={{
+                  scale: 1.2,
                   rotate: 5,
-                  transition: { duration: 0.2 }
+                  transition: { duration: 0.2 },
                 }}
               >
                 <Link
@@ -264,7 +262,6 @@ const ProjectCard = ({
       </Container>
     </motion.div>
   );
-
 };
 
 export default ProjectCard;
