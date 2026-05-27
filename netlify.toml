@@ -1,0 +1,5 @@
+# Static site — plain HTML/CSS/JS with React loaded via CDN. No build step.
+# These values take precedence over the dashboard build settings.
+[build]
+  command = "echo 'Static site — no build step'"
+  publish = "."
