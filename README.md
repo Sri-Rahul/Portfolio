@@ -1,4 +1,4 @@
-# Sri Rahul Namana — Portfolio
+# Sri Rahul Namana's Portfolio
 
 A single-page interactive portfolio: dark, cinematic, with a full-bleed Three.js
 landing scene, GSAP scroll animations, Lenis smooth scrolling, and a custom blob
@@ -6,11 +6,11 @@ cursor.
 
 ## Stack
 
-- **React 18** (loaded via CDN + in-browser Babel — no build step)
-- **Three.js** — landing icosahedron / orbiter scene and constellation backdrop
-- **GSAP + ScrollTrigger** — scroll-driven reveals and the pinned horizontal Work rail
-- **Lenis** — smooth scroll
-- Plain **CSS** with Geist / Geist Mono type
+- **React 18**, loaded from a CDN and compiled in the browser with Babel, so there is no build step
+- **Three.js** for the landing icosahedron and orbiter scene, plus the constellation backdrop
+- **GSAP and ScrollTrigger** for the scroll-driven reveals and the pinned horizontal Work rail
+- **Lenis** for smooth scrolling
+- Plain **CSS** with the Geist and Geist Mono typefaces
 
 ## Sections
 
@@ -33,7 +33,7 @@ Then open the printed URL.
 ## Structure
 
 ```
-index.html        entry — loads styles + scripts
+index.html        entry point, loads styles and scripts
 styles.css        all styling and animations
 app.jsx           React app: data, sections, components
 three-scene.js    landing 3D scene

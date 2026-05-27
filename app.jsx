@@ -14,34 +14,34 @@ const PROFILE = {
 const WHAT_I_DO = [
 {
   no: "01", title: "Plan",
-  desc: "Mapping the build before code lands &mdash; researching approaches, weighing tradeoffs, picking the right stack, and shaping the architecture that makes everything downstream simpler.",
+  desc: "Mapping out the build before any code lands. Researching the approaches, weighing the tradeoffs, picking the right stack, and shaping an architecture that keeps everything downstream simpler.",
   tags: ["Research", "Stack decisions", "Architecture", "Tradeoffs", "Constraints", "Scope", "Prior art"]
 },
 {
   no: "02", title: "Develop",
-  desc: "Building production AI products end-to-end &mdash; voice agents, full-stack platforms, payment integrations, and the API layer that ties everything together.",
+  desc: "Building production AI products from end to end. Voice agents, full-stack platforms, payment integrations, and the API layer that ties it all together.",
   tags: ["Full-stack", "Next.js", "React", "Node.js", "FastAPI", "Voice agents", "Integrations"]
 },
 {
   no: "03", title: "Design",
-  desc: "Interface and conversation design &mdash; voice flows, platform UI, content systems. Wireframes, prototypes, and the visual language that turns features into experiences people remember.",
+  desc: "Interface and conversation design. Voice flows, platform UI, and content systems, plus the wireframes, prototypes, and visual language that turn features into experiences people remember.",
   tags: ["Figma", "UI Design", "Voice / conversation", "Platform UX", "Prototyping", "Content systems"]
 }];
 
 
 const CAREER = [
 { year: "2023", role: "Content Writer & PM Intern", org: "Thaya Jewels", period: "Mar – May 2023",
-  body: "Developed SEO-optimized content and managed product listings; implemented digital marketing strategies that lifted organic search rankings by 20%." },
+  body: "Developed SEO-optimized content and managed product listings. Ran digital marketing campaigns that lifted organic search rankings by 20%." },
 { year: "2023", role: "Content Editor", org: "CSI VITAP Chapter", period: "Jan – Dec 2023",
-  body: "Created multi-platform content and produced multimedia in Wondershare Filmora; collaborated with cross-functional teams across a year of programming." },
+  body: "Created content across multiple platforms and produced multimedia in Wondershare Filmora. Worked with teams from different departments through a year of programming." },
 { year: "2025", role: "AI Intern", org: "Edunet Foundation", period: "Jan 2025",
-  body: "Worked on image generation with Stable Diffusion and ComfyUI — fine-tuning diffusion models, optimizing prompt engineering, and producing high-quality outputs." },
+  body: "Worked on image generation with Stable Diffusion and ComfyUI. Fine-tuned diffusion models, sharpened the prompt engineering, and produced high-quality outputs." },
 { year: "2025", role: "Web Developer Intern", org: "Texvo Developers", period: "Feb – May 2025",
-  body: "Remote web development — designed and implemented applications in PHP, HTML, JS, MySQL, and integrated AI tools. Built CRUD operations in Spring Boot." },
+  body: "Built web applications remotely in PHP, HTML, JS, and MySQL, wired in AI tools, and wrote CRUD operations in Spring Boot." },
 { year: "2025", role: "AI Intern", org: "Inbotiq", period: "May – Nov 2025",
-  body: "Built the main platform with subscriptions and agents management; deployed n8n and an SEO automation workflow with human-review checkpoints; designed the database schema from scratch." },
+  body: "Built the main platform with subscriptions and agent management. Deployed n8n and an SEO automation workflow with human review at every checkpoint, then designed the database schema from scratch." },
 { year: "NOW", role: "Associate Technical Lead", org: "Inbotiq", period: "Nov 2025 – Present",
-  body: "Leading AI and voice products end-to-end. Delivered Vanee — a node-graph voice agent with author-controlled phases; deployed a trainable voice model; finetuned an LLM for structured-data extraction for Volza; led Razorpay payment integration into the main platform." }];
+  body: "Leading AI and voice products from research to deployment. Delivered Vanee, a node-graph voice agent with author-controlled phases. Deployed a trainable voice model, finetuned an LLM for structured-data extraction for Volza, and led the Razorpay payment integration on the main platform." }];
 
 
 const PROJECTS = [
@@ -479,15 +479,15 @@ function About() {
       <div className="about-grid">
         <div className="about-copy" ref={copyRef}>
           I'm a <strong>Computer Science</strong> professional from Vellore Institute
-          of Technology, currently <strong>Associate Technical Lead at Inbotiq</strong> —
-          leading AI and voice products from research through deployment. I've shipped a
+          of Technology, now <strong>Associate Technical Lead at Inbotiq</strong>,
+          where I lead AI and voice products from research through deployment. I've shipped a
           node-graph voice agent (<strong>Vanee</strong>), finetuned LLMs for structured
           data extraction, and built the platform that ties our agents together.
           <br /><br />
-          My work spans the full ML lifecycle — research, dataset curation, fine-tuning,
-          optimised deployment and the API layer that makes it usable.
-          I also lead conversation and interface design — voice flows, platform UX,
-          and the visual language across our surfaces.
+          My work covers the full ML lifecycle, from research and dataset curation to
+          fine-tuning, optimised deployment, and the API layer that makes it usable.
+          I also lead conversation and interface design, from voice flows and platform UX
+          to the visual language across our surfaces.
         </div>
 
         <div className="about-side" ref={sideRef}>
@@ -784,7 +784,7 @@ function Work() {
       <div className="work-pin">
         <div className="work-pin-header" ref={headerRef}>
           <div className="heading-stack">
-            <p className="eyebrow">— Selected work / 2023 – 2026</p>
+            <p className="eyebrow">Selected work / 2023 – 2026</p>
             <h2>Recent <span className="accent">builds</span>.</h2>
           </div>
           <div className="work-progress" ref={progressRef}>
@@ -929,7 +929,7 @@ function TechStack() {
   return (
     <section className="tech-sect" id="tech" data-comment-anchor="e9a217dcab-section-719-5">
       <div className="tech-bg" ref={bgRef} aria-hidden="true"></div>
-      <p className="tech-eyebrow" ref={eyebrowRef}>— Toolset</p>
+      <p className="tech-eyebrow" ref={eyebrowRef}>Toolset</p>
       <h2 ref={titleRef} data-text="Techstack.">Techstack.</h2>
       {Object.entries(TECH).map(([cat, items]) => {
         const gi = gridIdx++;
@@ -1058,7 +1058,7 @@ function Contact() {
   return (
     <section className="contact" id="contact">
       <SectionIndex idx="06" side="left" />
-      <p className="contact-eyebrow">— Let's connect</p>
+      <p className="contact-eyebrow">Let's connect</p>
       <h2 className="contact-headline" ref={titleRef}>
         <span className="word" style={{ "--wd": "0s" }}>Let's</span>
         <br />
@@ -1068,7 +1068,7 @@ function Contact() {
 
       <div className="contact-channels">
         <div className="cc">
-          <span className="cc-label">— Email · drop a line</span>
+          <span className="cc-label">Email · drop a line</span>
           <Magnetic strength={0.25}>
             <a
               className="cc-link"
@@ -1083,7 +1083,7 @@ function Contact() {
         </div>
 
         <div className="cc">
-          <span className="cc-label">— Social · find me on</span>
+          <span className="cc-label">Social · find me on</span>
           <Magnetic strength={0.25}>
             <a
               className="cc-link"
@@ -1122,7 +1122,7 @@ function Contact() {
           <p className="ft-tagline">
             Open to <span className="accent">SDE</span>, <span className="accent">ML</span>, and product-minded teams that ship.
             <br />
-            Built with React, GSAP &amp; Three.js — drop a line anytime.
+            Built with React, GSAP, and Three.js. Drop a line anytime.
           </p>
         </div>
         <div className="ft-side">
