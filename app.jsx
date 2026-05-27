@@ -270,7 +270,7 @@ function Nav() {
         <span className="glyph" aria-hidden="true">
           <span className="dot"></span>
         </span>
-        <span>SR<i>.</i>Namana</span>
+        <span>Sri Rahul</span>
       </a>
       <ul className="nav-links">
         {links.map((l) =>
@@ -1117,7 +1117,7 @@ function Contact() {
         <div className="ft-brand">
           <div className="ft-logo">
             <span className="glyph" aria-hidden="true"><span className="dot"></span></span>
-            <span>SR<i>.</i>Namana</span>
+            <span>Sri Rahul</span>
           </div>
           <p className="ft-tagline">
             Open to <span className="accent">SDE</span>, <span className="accent">ML</span>, and product-minded teams that ship.
