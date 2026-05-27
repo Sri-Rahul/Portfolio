@@ -1903,3 +1903,36 @@ section { position: relative; }
   transform: none;
   white-space: pre;
 }
+
+/* ─── Responsive refinements (small screens) — desktop layout unchanged ─── */
+
+/* Scale the largest display type down so long words don't clip on phones */
+@media (max-width: 600px) {
+  .about-mega { font-size: clamp(38px, 12vw, 60px); }
+  .contact-headline { font-size: clamp(40px, 14vw, 72px); margin-bottom: 64px; }
+}
+
+/* Nav pill: keep every link visible on phones — icon-only logo + compact links */
+@media (max-width: 560px) {
+  .nav { gap: 6px; padding: 7px 8px; }
+  .nav-logo { gap: 0; padding: 6px; }
+  .nav-logo > span:last-child { display: none; }
+  .nav-links { gap: 2px; }
+  .nav-links a { padding: 7px 8px; font-size: 10px; letter-spacing: 0.6px; }
+}
+@media (max-width: 380px) {
+  .nav-links { gap: 1px; }
+  .nav-links a { padding: 6px 6px; font-size: 9px; letter-spacing: 0.3px; }
+}
+
+/* Career: keep the item number from bleeding off the left edge on mobile */
+@media (max-width: 800px) {
+  .career-item-num { left: 36px; transform: none; padding-left: 0; }
+}
+
+/* Work: stack header + trim card padding when the rail becomes a vertical list */
+@media (max-width: 700px) {
+  .work-pin-header { grid-template-columns: 1fr; gap: 18px; }
+  .work-progress { align-items: flex-start; }
+  .work-box { padding: 40px 24px; }
+}
