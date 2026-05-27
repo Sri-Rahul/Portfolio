@@ -738,11 +738,14 @@ function Work() {
   useEffect(() => {
     if (!outerRef.current || !trackRef.current) return;
     if (!window.gsap || !window.ScrollTrigger) return;
-    // Only horizontal-pin on desktop
-    const isDesktop = window.matchMedia("(min-width: 1025px)").matches;
-    if (!isDesktop) return;
 
-    const ctx = gsap.context(() => {
+    // gsap.matchMedia sets up the horizontal pin only at desktop widths and
+    // automatically tears it down (killing the tween + clearing the track's
+    // transform) when the viewport drops to <=1024px. Without this, a pin built
+    // at a wide width stays stuck after a resize/orientation change, leaving the
+    // mobile vertical card list broken.
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 1025px)", () => {
       const track = trackRef.current;
       const distance = track.scrollWidth - window.innerWidth + 40;
 
@@ -771,9 +774,9 @@ function Work() {
       });
 
       return () => tween.kill();
-    }, outerRef);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (
