@@ -393,34 +393,18 @@ function About() {
       const words = titleRef.current.querySelectorAll(".aw > *");
       const ems = titleRef.current.querySelectorAll(".aw em");
 
+      // Scrubbed reveal: the words assemble as the title scrolls in. This is
+      // self-correcting — once the title is scrolled into view the progress is
+      // 1 and every word is fully shown, so a word can never get stranded
+      // hidden the way a one-shot gsap.from() can if its trigger is missed.
       const titleTl = gsap.timeline({
-        scrollTrigger: { trigger: titleRef.current, start: "top 85%" }
+        scrollTrigger: { trigger: titleRef.current, start: "top 90%", end: "top 45%", scrub: 1 }
       });
-
-      // 1) Words slide up
       titleTl.from(words, {
-        yPercent: 110, opacity: 0,
-        duration: 1.1, ease: "power3.out", stagger: 0.15
+        yPercent: 110, opacity: 0, ease: "power3.out", stagger: 0.15
       });
-
-      // 2) Glowing underline draws across each italic word
       if (ems.length) {
-        titleTl.to(ems, {
-          "--lit": 1,
-          duration: 0.9, ease: "power2.out", stagger: 0.18
-        }, "-=0.4");
-      }
-
-      // 3) Subtle brightness pulse on italic words as the underline lands
-      if (ems.length) {
-        titleTl.fromTo(ems,
-          { filter: "drop-shadow(0 0 0 transparent)" },
-          {
-            filter: "drop-shadow(0 0 28px rgba(251, 141, 255, 0.55))",
-            duration: 0.5, ease: "power2.out", stagger: 0.18,
-            yoyo: true, repeat: 1
-          }, "<"
-        );
+        titleTl.to(ems, { "--lit": 1, ease: "power2.out", stagger: 0.18 }, "-=0.3");
       }
     }
 

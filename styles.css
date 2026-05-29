@@ -674,6 +674,21 @@ section { position: relative; }
   color: var(--accent); font-weight: 400;
   margin: 0 0 32px 0;
 }
+/* Shared eyebrow flourish — leading accent rule + a small pulsing dot, applied
+   to every simple section label so they read consistently across the page.
+   (Career and Certifications use their own centered chapter-mark treatment.) */
+.eyebrow, .contact-eyebrow, .tech-eyebrow {
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.eyebrow::before, .contact-eyebrow::before, .tech-eyebrow::before {
+  content: ""; width: 36px; height: 1px; flex: 0 0 auto;
+  background: linear-gradient(90deg, transparent, var(--accent));
+}
+.eyebrow::after, .contact-eyebrow::after, .tech-eyebrow::after {
+  content: ""; width: 5px; height: 5px; border-radius: 50%; flex: 0 0 auto;
+  background: var(--accent); box-shadow: 0 0 8px var(--accent);
+  animation: aboutDotPulse 2.2s ease-in-out infinite;
+}
 .section-title {
   font-size: clamp(44px, 6vw, 88px);
   line-height: 1; letter-spacing: -0.02em;
@@ -703,17 +718,6 @@ section { position: relative; }
 }
 @media (prefers-reduced-motion: reduce) { .about-glow { animation: none; } }
 
-/* Eyebrow flourish — leading accent rule + a small pulsing dot */
-.about-hero .eyebrow { display: inline-flex; align-items: center; gap: 14px; }
-.about-hero .eyebrow::before {
-  content: ""; width: 36px; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent));
-}
-.about-hero .eyebrow::after {
-  content: ""; width: 5px; height: 5px; border-radius: 50%;
-  background: var(--accent); box-shadow: 0 0 8px var(--accent);
-  animation: aboutDotPulse 2.2s ease-in-out infinite;
-}
 @keyframes aboutDotPulse {
   0%, 100% { opacity: 0.5; transform: scale(1); }
   50%      { opacity: 1; transform: scale(1.35); }
@@ -735,6 +739,15 @@ section { position: relative; }
   color: transparent;
   position: relative;
   display: inline-block;
+}
+/* The non-italic words sit in a bare <span>. GSAP animates each word onto its
+   own layer, where a child of a background-clip:text parent paints invisible
+   (it only inherits color:transparent, with no gradient of its own). Give them
+   the same gradient fill as the italics so they always render. */
+.about-mega .aw > span {
+  background: linear-gradient(180deg, #fff 20%, rgba(255, 255, 255, 0.05) 95%);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
 }
 /* Glowing accent underline that draws across each italic word — signature flourish */
 .about-mega em::after {
