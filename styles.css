@@ -888,22 +888,6 @@ section { position: relative; }
   border-color: var(--accent);
   transform: translateY(-2px);
 }
-.wcard-arrow {
-  position: absolute; bottom: 22px; right: 22px;
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.2);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; transition: all .4s cubic-bezier(.2,.8,.2,1);
-  z-index: 3;
-}
-.wcard:hover .wcard-arrow {
-  background: var(--accent); color: var(--bg);
-  border-color: var(--accent);
-  transform: rotate(45deg) scale(1.1);
-  box-shadow: 0 6px 20px rgba(194,164,255,0.4);
-}
-
 .career-eyebrow {
   display: flex; flex-direction: column; align-items: center;
   gap: 18px;

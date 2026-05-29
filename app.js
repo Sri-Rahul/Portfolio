@@ -796,9 +796,7 @@ function WhatIDo() {
   }, c.tags.map(t => /*#__PURE__*/React.createElement("span", {
     key: t,
     className: "wcard-tag"
-  }, t))), /*#__PURE__*/React.createElement("div", {
-    className: "wcard-arrow"
-  }, "\u2197"))))));
+  }, t))))))));
 }
 
 /* ─── Career (cinematic redesign) ──────────────────────── */
@@ -1018,6 +1016,7 @@ function Work() {
   const outerRef = useRef(null);
   const trackRef = useRef(null);
   const progressRef = useRef(null);
+  const curRef = useRef(null);
   const headerRef = useRef(null);
   useEffect(() => {
     if (!outerRef.current || !trackRef.current) return;
@@ -1046,6 +1045,11 @@ function Work() {
           onUpdate: self => {
             if (progressRef.current) {
               progressRef.current.style.setProperty("--p", self.progress * 100 + "%");
+            }
+            if (curRef.current) {
+              const count = PROJECTS.length;
+              const idx = Math.min(count, Math.floor(self.progress * count) + 1);
+              curRef.current.textContent = String(idx).padStart(2, "0");
             }
           }
         }
@@ -1086,7 +1090,8 @@ function Work() {
     className: "work-progress-counter"
   }, /*#__PURE__*/React.createElement("span", {
     className: "cur",
-    "data-current": true
+    "data-current": true,
+    ref: curRef
   }, "01"), /*#__PURE__*/React.createElement("span", {
     className: "sep"
   }, "/"), /*#__PURE__*/React.createElement("span", {

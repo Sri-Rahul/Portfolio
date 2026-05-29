@@ -587,7 +587,6 @@ function WhatIDo() {
               <div className="wcard-tags">
                 {c.tags.map((t) => <span key={t} className="wcard-tag">{t}</span>)}
               </div>
-              <div className="wcard-arrow">↗</div>
             </div>
           </div>
         )}
@@ -755,6 +754,7 @@ function Work() {
   const outerRef = useRef(null);
   const trackRef = useRef(null);
   const progressRef = useRef(null);
+  const curRef = useRef(null);
   const headerRef = useRef(null);
 
   useEffect(() => {
@@ -786,6 +786,11 @@ function Work() {
             if (progressRef.current) {
               progressRef.current.style.setProperty("--p", self.progress * 100 + "%");
             }
+            if (curRef.current) {
+              const count = PROJECTS.length;
+              const idx = Math.min(count, Math.floor(self.progress * count) + 1);
+              curRef.current.textContent = String(idx).padStart(2, "0");
+            }
           }
         }
       });
@@ -811,7 +816,7 @@ function Work() {
           </div>
           <div className="work-progress" ref={progressRef}>
             <div className="work-progress-counter">
-              <span className="cur" data-current>01</span>
+              <span className="cur" data-current ref={curRef}>01</span>
               <span className="sep">/</span>
               <span className="tot">04</span>
             </div>
