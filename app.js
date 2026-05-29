@@ -47,10 +47,10 @@ const CAREER = [{
   org: "CSI VITAP Chapter",
   period: "Jan – Dec 2023",
   hl: {
-    v: "1 yr",
-    l: "Content & media"
+    v: "Reels",
+    l: "Video editing"
   },
-  body: "Created content across multiple platforms and produced multimedia in Wondershare Filmora. Worked with teams from different departments through a year of programming."
+  body: "Edited videos and Instagram reels for the chapter and produced multimedia in Wondershare Filmora, working with teams across departments through a year of programming."
 }, {
   year: "2025",
   role: "AI Intern",
@@ -58,29 +58,29 @@ const CAREER = [{
   period: "Jan 2025",
   hl: {
     v: "Diffusion",
-    l: "Model fine-tuning"
+    l: "ComfyUI · image gen"
   },
-  body: "Worked on image generation with Stable Diffusion and ComfyUI. Fine-tuned diffusion models, sharpened the prompt engineering, and produced high-quality outputs."
+  body: "Explored image generation with Stable Diffusion and ComfyUI, fine-tuning diffusion models and refining the prompt engineering to produce high-quality outputs."
 }, {
   year: "2025",
   role: "Web Developer Intern",
   org: "Texvo Developers",
   period: "Feb – May 2025",
   hl: {
-    v: "Full-stack",
-    l: "PHP · Spring Boot"
+    v: "Ordering",
+    l: "Restaurant system"
   },
-  body: "Built web applications remotely in PHP, HTML, JS, and MySQL, wired in AI tools, and wrote CRUD operations in Spring Boot."
+  body: "Built a restaurant digital ordering system with kitchen, customer, and waiter dashboards plus order automation, working remotely across PHP, JS, MySQL, and Spring Boot."
 }, {
   year: "2025",
   role: "AI Intern",
   org: "Inbotiq",
   period: "May – Nov 2025",
   hl: {
-    v: "Platform",
-    l: "Built from scratch"
+    v: "RAG",
+    l: "SEO automation"
   },
-  body: "Built the main platform with subscriptions and agent management. Deployed n8n and an SEO automation workflow with human review at every checkpoint, then designed the database schema from scratch."
+  body: "Built the main platform with subscriptions and agent management and designed its database schema from scratch. Shipped a RAG-based SEO workflow on n8n that runs keyword research and auto-publishes blog posts with CTAs to WordPress."
 }, {
   year: "NOW",
   role: "Associate Technical Lead",

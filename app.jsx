@@ -32,14 +32,14 @@ const WHAT_I_DO = [
 const CAREER = [
 { year: "2023", role: "Content Writer & PM Intern", org: "Thaya Jewels", period: "Mar – May 2023", hl: { v: "+20%", l: "Organic search" },
   body: "Developed SEO-optimized content and managed product listings. Ran digital marketing campaigns that lifted organic search rankings by 20%." },
-{ year: "2023", role: "Content Editor", org: "CSI VITAP Chapter", period: "Jan – Dec 2023", hl: { v: "1 yr", l: "Content & media" },
-  body: "Created content across multiple platforms and produced multimedia in Wondershare Filmora. Worked with teams from different departments through a year of programming." },
-{ year: "2025", role: "AI Intern", org: "Edunet Foundation", period: "Jan 2025", hl: { v: "Diffusion", l: "Model fine-tuning" },
-  body: "Worked on image generation with Stable Diffusion and ComfyUI. Fine-tuned diffusion models, sharpened the prompt engineering, and produced high-quality outputs." },
-{ year: "2025", role: "Web Developer Intern", org: "Texvo Developers", period: "Feb – May 2025", hl: { v: "Full-stack", l: "PHP · Spring Boot" },
-  body: "Built web applications remotely in PHP, HTML, JS, and MySQL, wired in AI tools, and wrote CRUD operations in Spring Boot." },
-{ year: "2025", role: "AI Intern", org: "Inbotiq", period: "May – Nov 2025", hl: { v: "Platform", l: "Built from scratch" },
-  body: "Built the main platform with subscriptions and agent management. Deployed n8n and an SEO automation workflow with human review at every checkpoint, then designed the database schema from scratch." },
+{ year: "2023", role: "Content Editor", org: "CSI VITAP Chapter", period: "Jan – Dec 2023", hl: { v: "Reels", l: "Video editing" },
+  body: "Edited videos and Instagram reels for the chapter and produced multimedia in Wondershare Filmora, working with teams across departments through a year of programming." },
+{ year: "2025", role: "AI Intern", org: "Edunet Foundation", period: "Jan 2025", hl: { v: "Diffusion", l: "ComfyUI · image gen" },
+  body: "Explored image generation with Stable Diffusion and ComfyUI, fine-tuning diffusion models and refining the prompt engineering to produce high-quality outputs." },
+{ year: "2025", role: "Web Developer Intern", org: "Texvo Developers", period: "Feb – May 2025", hl: { v: "Ordering", l: "Restaurant system" },
+  body: "Built a restaurant digital ordering system with kitchen, customer, and waiter dashboards plus order automation, working remotely across PHP, JS, MySQL, and Spring Boot." },
+{ year: "2025", role: "AI Intern", org: "Inbotiq", period: "May – Nov 2025", hl: { v: "RAG", l: "SEO automation" },
+  body: "Built the main platform with subscriptions and agent management and designed its database schema from scratch. Shipped a RAG-based SEO workflow on n8n that runs keyword research and auto-publishes blog posts with CTAs to WordPress." },
 { year: "NOW", role: "Associate Technical Lead", org: "Inbotiq", period: "Nov 2025 – Present", hl: { v: "96%+", l: "Client-reported accuracy" },
   body: "Leading AI and voice products from research to deployment. Delivered Vanee, a node-graph voice agent with author-controlled phases. Deployed a trainable voice model, built and finetuned an LLM from scratch for structured-data extraction at Volza that reached 96%+ client-reported accuracy, and led the Razorpay payment integration on the main platform." }];
 
