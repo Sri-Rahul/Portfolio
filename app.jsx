@@ -382,6 +382,8 @@ function About() {
   const copyRef = useRef(null);
   const sideRef = useRef(null);
   const statRefs = useRef([]);
+  const sectionRef = useRef(null);
+  const glowRef = useRef(null);
 
   useEffect(() => {
     if (!window.gsap || !window.ScrollTrigger) return;
@@ -463,10 +465,47 @@ function About() {
         x: 30, opacity: 0, duration: 0.7, ease: "power3.out", stagger: 0.08
       }, "-=0.6");
     }
+
+    // Ambient aurora that gently follows the cursor across the section so the
+    // content feels lit from within and blends into the dark page
+    const section = sectionRef.current;
+    const glow = glowRef.current;
+    let rafPending = false, mx = 50, my = 38;
+    const onMove = (e) => {
+      const r = section.getBoundingClientRect();
+      mx = ((e.clientX - r.left) / r.width) * 100;
+      my = ((e.clientY - r.top) / r.height) * 100;
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(() => {
+          rafPending = false;
+          if (glow) {
+            glow.style.setProperty("--mx", mx + "%");
+            glow.style.setProperty("--my", my + "%");
+          }
+        });
+      }
+    };
+    const canHover = window.matchMedia("(hover: hover)").matches;
+    if (section && canHover) section.addEventListener("mousemove", onMove);
+
+    // Gentle parallax drift on the decorative /02 number as you scroll
+    const idxEl = section ? section.querySelector(".section-idx") : null;
+    if (idxEl) {
+      gsap.fromTo(idxEl, { yPercent: -10 }, {
+        yPercent: 10, ease: "none",
+        scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: 0.6 }
+      });
+    }
+
+    return () => {
+      if (section) section.removeEventListener("mousemove", onMove);
+    };
   }, []);
 
   return (
-    <section className="sect about-hero" id="about">
+    <section className="sect about-hero" id="about" ref={sectionRef}>
+      <div className="about-glow" ref={glowRef} aria-hidden="true"></div>
       <SectionIndex idx="02" />
       <p className="eyebrow">About</p>
       <h2 className="about-mega" ref={titleRef}>

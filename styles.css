@@ -683,7 +683,41 @@ section { position: relative; }
 .section-title em { font-style: italic; font-weight: 400; }
 
 /* ─── About — richer layout ─────────────────────────────── */
-.about-hero { position: relative; min-height: 70vh; }
+.about-hero { position: relative; min-height: 70vh; isolation: isolate; }
+
+/* Ambient aurora behind the content — breathes slowly and follows the cursor
+   (JS sets --mx/--my). Blends the section into the dark page and adds life. */
+.about-glow {
+  position: absolute; inset: -10% -5%;
+  z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(38% 46% at var(--mx, 50%) var(--my, 38%), rgba(194, 164, 255, 0.16), transparent 70%),
+    radial-gradient(34% 40% at 82% 78%, rgba(251, 141, 255, 0.07), transparent 72%);
+  filter: blur(26px);
+  opacity: 0.85;
+  animation: aboutGlowBreath 12s ease-in-out infinite;
+}
+@keyframes aboutGlowBreath {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 0.95; }
+}
+@media (prefers-reduced-motion: reduce) { .about-glow { animation: none; } }
+
+/* Eyebrow flourish — leading accent rule + a small pulsing dot */
+.about-hero .eyebrow { display: inline-flex; align-items: center; gap: 14px; }
+.about-hero .eyebrow::before {
+  content: ""; width: 36px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent));
+}
+.about-hero .eyebrow::after {
+  content: ""; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 8px var(--accent);
+  animation: aboutDotPulse 2.2s ease-in-out infinite;
+}
+@keyframes aboutDotPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.35); }
+}
 .about-mega {
   font-size: clamp(64px, 10vw, 180px);
   font-weight: 700; letter-spacing: -0.04em;
@@ -740,17 +774,31 @@ section { position: relative; }
   line-height: 1.35; font-weight: 400; letter-spacing: -0.005em;
   color: #d8d4e0;
 }
-.about-copy strong { font-weight: 600; color: var(--accent); }
+.about-copy strong { font-weight: 600; color: var(--accent); transition: text-shadow .3s; }
+.about-copy strong:hover { text-shadow: 0 0 18px rgba(194, 164, 255, 0.55); }
 .about-side { display: flex; flex-direction: column; gap: 32px; font-size: 14px; color: var(--fg-dim); }
 .about-stats {
+  position: relative;
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
   padding-top: 28px; border-top: 1px solid var(--line);
 }
+/* accent tick on the divider */
+.about-stats::before {
+  content: ""; position: absolute; top: -1px; left: 0;
+  width: 64px; height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+.about-stat { transition: transform .4s cubic-bezier(.2, .8, .2, 1); }
+.about-stat:hover { transform: translateY(-3px); }
 .about-stat .v {
   font-size: clamp(32px, 3vw, 56px);
-  font-weight: 600; color: var(--fg); line-height: 1;
+  font-weight: 600; line-height: 1;
   font-feature-settings: "tnum";
+  background: linear-gradient(180deg, #fff 30%, var(--accent));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  transition: filter .4s;
 }
+.about-stat:hover .v { filter: drop-shadow(0 0 20px rgba(194, 164, 255, 0.55)); }
 .about-stat .l {
   font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
   margin-top: 10px; color: var(--fg-dim);
@@ -760,8 +808,14 @@ section { position: relative; }
   padding-top: 20px; border-top: 1px solid var(--line);
   font-size: 13px; color: var(--fg-dim);
 }
-.about-meta-row { display: flex; justify-content: space-between; gap: 18px; }
-.about-meta-row .k { flex: 0 0 auto; text-transform: uppercase; letter-spacing: 2px; font-size: 11px; color: var(--fg-faint); }
+.about-meta-row {
+  display: flex; justify-content: space-between; gap: 18px;
+  padding: 5px 10px; margin: 0 -10px; border-radius: 7px;
+  transition: background .3s;
+}
+.about-meta-row:hover { background: rgba(194, 164, 255, 0.06); }
+.about-meta-row .k { flex: 0 0 auto; text-transform: uppercase; letter-spacing: 2px; font-size: 11px; color: var(--fg-faint); transition: color .3s; }
+.about-meta-row:hover .k { color: var(--accent); }
 .about-meta-row .v { flex: 1 1 auto; min-width: 0; text-align: right; color: var(--fg); }
 
 /* ─── What I Do (cinematic redesign) ───────────────────── */
@@ -1863,7 +1917,7 @@ section { position: relative; }
 .section-idx.left { right: auto; left: -2%; }
 .section-idx.bottom { top: auto; bottom: 40px; }
 @media (max-width: 900px) { .section-idx { display: none; } }
-.sect > *:not(.section-idx) { position: relative; z-index: 1; }
+.sect > *:not(.section-idx):not(.about-glow) { position: relative; z-index: 1; }
 .career > *:not(.section-idx) { position: relative; z-index: 1; }
 
 /* ─── Magnetic link wrapper ───────────────── */
