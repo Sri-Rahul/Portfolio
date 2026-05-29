@@ -769,6 +769,11 @@ section { position: relative; }
 @media (min-width: 900px) { .whatido { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1200px) { .whatido { grid-template-columns: repeat(3, 1fr); } }
 
+/* Reveal wrapper for the Practices cards — GSAP animates this so the inner
+   card's own mouse-tilt transform is never overwritten */
+.wcard-reveal { display: flex; }
+.wcard-reveal > .wcard { flex: 1 1 auto; width: 100%; }
+
 .wcard {
   position: relative;
   padding: 44px 36px 32px;
@@ -1039,6 +1044,44 @@ section { position: relative; }
   text-transform: uppercase;
   font-family: "Geist Mono", ui-monospace, monospace;
 }
+/* ─── Career role highlight chip (eye-candy metric per role) ─── */
+.ci-highlight {
+  display: inline-flex; align-items: baseline; gap: 10px;
+  margin-top: 18px; padding: 9px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: linear-gradient(120deg, rgba(194, 164, 255, 0.10), rgba(251, 141, 255, 0.03));
+  position: relative; overflow: hidden;
+  transition: border-color .35s, box-shadow .35s, background .35s;
+}
+.ci-highlight:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px rgba(194, 164, 255, 0.18);
+}
+.ci-hl-dot {
+  width: 7px; height: 7px; border-radius: 50%; align-self: center;
+  background: var(--accent); box-shadow: 0 0 8px var(--accent);
+  flex-shrink: 0;
+}
+.ci-hl-v {
+  font-size: 17px; font-weight: 700; line-height: 1; letter-spacing: -0.01em;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.ci-hl-l {
+  font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--fg-dim);
+  font-family: "Geist Mono", ui-monospace, monospace;
+}
+/* Hover shimmer sweep — no constant animation, so it stays resource-light */
+.ci-highlight::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.12) 50%, transparent 75%);
+  transform: translateX(-130%);
+  transition: transform .7s cubic-bezier(.2, .8, .2, 1);
+  pointer-events: none;
+}
+.ci-highlight:hover::after { transform: translateX(130%); }
 .ci-year {
   font-size: clamp(80px, 11vw, 180px);
   font-weight: 600; color: var(--fg);

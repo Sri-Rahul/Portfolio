@@ -36,36 +36,60 @@ const CAREER = [{
   role: "Content Writer & PM Intern",
   org: "Thaya Jewels",
   period: "Mar – May 2023",
+  hl: {
+    v: "+20%",
+    l: "Organic search"
+  },
   body: "Developed SEO-optimized content and managed product listings. Ran digital marketing campaigns that lifted organic search rankings by 20%."
 }, {
   year: "2023",
   role: "Content Editor",
   org: "CSI VITAP Chapter",
   period: "Jan – Dec 2023",
+  hl: {
+    v: "1 yr",
+    l: "Content & media"
+  },
   body: "Created content across multiple platforms and produced multimedia in Wondershare Filmora. Worked with teams from different departments through a year of programming."
 }, {
   year: "2025",
   role: "AI Intern",
   org: "Edunet Foundation",
   period: "Jan 2025",
+  hl: {
+    v: "Diffusion",
+    l: "Model fine-tuning"
+  },
   body: "Worked on image generation with Stable Diffusion and ComfyUI. Fine-tuned diffusion models, sharpened the prompt engineering, and produced high-quality outputs."
 }, {
   year: "2025",
   role: "Web Developer Intern",
   org: "Texvo Developers",
   period: "Feb – May 2025",
+  hl: {
+    v: "Full-stack",
+    l: "PHP · Spring Boot"
+  },
   body: "Built web applications remotely in PHP, HTML, JS, and MySQL, wired in AI tools, and wrote CRUD operations in Spring Boot."
 }, {
   year: "2025",
   role: "AI Intern",
   org: "Inbotiq",
   period: "May – Nov 2025",
+  hl: {
+    v: "Platform",
+    l: "Built from scratch"
+  },
   body: "Built the main platform with subscriptions and agent management. Deployed n8n and an SEO automation workflow with human review at every checkpoint, then designed the database schema from scratch."
 }, {
   year: "NOW",
   role: "Associate Technical Lead",
   org: "Inbotiq",
   period: "Nov 2025 – Present",
+  hl: {
+    v: "96%+",
+    l: "Client-reported accuracy"
+  },
   body: "Leading AI and voice products from research to deployment. Delivered Vanee, a node-graph voice agent with author-controlled phases. Deployed a trainable voice model, built and finetuned an LLM from scratch for structured-data extraction at Volza that reached 96%+ client-reported accuracy, and led the Razorpay payment integration on the main platform."
 }];
 const PROJECTS = [{
@@ -671,14 +695,15 @@ function About() {
 /* ─── What I Do (cinematic redesign) ────────────────────── */
 function WhatIDo() {
   const titleRef = useRef(null);
-  const cardsRef = useRef([]);
+  const cardsRef = useRef([]); // reveal wrappers — GSAP animates these
+  const tiltRef = useRef([]); // inner cards — mouse tilt + glow live here
   useEffect(() => {
     if (window.gsap && window.ScrollTrigger) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: titleRef.current,
           start: "top 85%",
-          end: "top 25%",
+          end: "top 30%",
           scrub: 1
         }
       });
@@ -688,18 +713,23 @@ function WhatIDo() {
         duration: 1,
         ease: "power3.out"
       });
+      // Whole-card cinematic blend-in: rise + fade + scale-up + de-blur, staggered.
+      // Scrubbed so it tracks scroll and can never get stuck invisible.
       tl.from(cardsRef.current, {
-        y: 60,
+        y: 90,
         opacity: 0,
-        duration: 0.9,
+        scale: 0.9,
+        filter: "blur(14px)",
+        duration: 1,
         ease: "power3.out",
-        stagger: 0.2
+        stagger: 0.18
       }, "-=0.5");
     }
 
-    // Mouse-follow glow + 3D tilt on each card
+    // Mouse-follow glow + 3D tilt on each inner card (kept off the GSAP wrapper
+    // so the reveal transform and the tilt transform never fight each other)
     const handlers = [];
-    cardsRef.current.forEach(card => {
+    tiltRef.current.forEach(card => {
       if (!card) return;
       const onMove = e => {
         const r = card.getBoundingClientRect();
@@ -746,9 +776,12 @@ function WhatIDo() {
   }, "Three ", /*#__PURE__*/React.createElement("em", null, "Practices"), "."), /*#__PURE__*/React.createElement("div", {
     className: "whatido"
   }, WHAT_I_DO.map((c, i) => /*#__PURE__*/React.createElement("div", {
-    className: "wcard",
+    className: "wcard-reveal",
     key: c.no,
     ref: el => cardsRef.current[i] = el
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "wcard",
+    ref: el => tiltRef.current[i] = el
   }, /*#__PURE__*/React.createElement("div", {
     className: "wcard-big-num"
   }, c.no, /*#__PURE__*/React.createElement("span", {
@@ -765,7 +798,7 @@ function WhatIDo() {
     className: "wcard-tag"
   }, t))), /*#__PURE__*/React.createElement("div", {
     className: "wcard-arrow"
-  }, "\u2197")))));
+  }, "\u2197"))))));
 }
 
 /* ─── Career (cinematic redesign) ──────────────────────── */
@@ -886,6 +919,20 @@ function Career() {
           }
         });
       }
+      // Highlight chip pops in as the role settles — eye-candy per role
+      const hl = el.querySelector(".ci-highlight");
+      if (hl) {
+        gsap.from(hl, {
+          scale: 0.6,
+          opacity: 0,
+          duration: 0.7,
+          ease: "back.out(2)",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 76%"
+          }
+        });
+      }
     });
   }, []);
   return /*#__PURE__*/React.createElement("section", {
@@ -950,7 +997,15 @@ function Career() {
     className: "ci-role"
   }, c.role), /*#__PURE__*/React.createElement("p", {
     className: "ci-period"
-  }, c.period)), /*#__PURE__*/React.createElement("div", {
+  }, c.period), c.hl && /*#__PURE__*/React.createElement("div", {
+    className: "ci-highlight"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ci-hl-dot"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "ci-hl-v"
+  }, c.hl.v), /*#__PURE__*/React.createElement("span", {
+    className: "ci-hl-l"
+  }, c.hl.l))), /*#__PURE__*/React.createElement("div", {
     className: "ci-body"
   }, /*#__PURE__*/React.createElement("h3", {
     className: "ci-year",
