@@ -473,7 +473,7 @@ function About() {
         <span className="aw"><span>Versatile,</span></span>{" "}
         <span className="aw"><em>thoughtful</em>,</span>
         <br />
-        <span className="aw"><em>persistent.</em></span>
+        <span className="aw"><em>relentless.</em></span>
       </h2>
 
       <div className="about-grid">

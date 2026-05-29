@@ -633,7 +633,7 @@ function About() {
     className: "aw"
   }, /*#__PURE__*/React.createElement("em", null, "thoughtful"), ","), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
     className: "aw"
-  }, /*#__PURE__*/React.createElement("em", null, "persistent."))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("em", null, "relentless."))), /*#__PURE__*/React.createElement("div", {
     className: "about-grid"
   }, /*#__PURE__*/React.createElement("div", {
     className: "about-copy",
