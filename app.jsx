@@ -41,7 +41,7 @@ const CAREER = [
 { year: "2025", role: "AI Intern", org: "Inbotiq", period: "May – Nov 2025",
   body: "Built the main platform with subscriptions and agent management. Deployed n8n and an SEO automation workflow with human review at every checkpoint, then designed the database schema from scratch." },
 { year: "NOW", role: "Associate Technical Lead", org: "Inbotiq", period: "Nov 2025 – Present",
-  body: "Leading AI and voice products from research to deployment. Delivered Vanee, a node-graph voice agent with author-controlled phases. Deployed a trainable voice model, finetuned an LLM for structured-data extraction for Volza, and led the Razorpay payment integration on the main platform." }];
+  body: "Leading AI and voice products from research to deployment. Delivered Vanee, a node-graph voice agent with author-controlled phases. Deployed a trainable voice model, built and finetuned an LLM from scratch for structured-data extraction at Volza that reached 96%+ client-reported accuracy, and led the Razorpay payment integration on the main platform." }];
 
 
 const PROJECTS = [
@@ -504,7 +504,7 @@ function About() {
           <div className="about-meta">
             <div className="about-meta-row"><span className="k">Role</span><span className="v">Associate Tech Lead</span></div>
             <div className="about-meta-row"><span className="k">Company</span><span className="v"><a href="https://inbotiq.com" target="_blank" rel="noreferrer">Inbotiq</a></span></div>
-            <div className="about-meta-row"><span className="k">School</span><span className="v">VIT</span></div>
+            <div className="about-meta-row"><span className="k">School</span><span className="v">Vellore Institute of Technology</span></div>
             <div className="about-meta-row"><span className="k">Location</span><span className="v">India</span></div>
           </div>
         </div>
@@ -838,7 +838,10 @@ function Work() {
                 </div>
               </div>
               <div className="work-image">
-                <img src={p.image} alt={p.name} loading="lazy" />
+                <picture>
+                  <source srcSet={p.image.replace(/\.png$/, ".webp")} type="image/webp" />
+                  <img src={p.image} alt={p.name} loading="lazy" decoding="async" />
+                </picture>
               </div>
             </div>
           )}

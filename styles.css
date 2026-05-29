@@ -760,9 +760,9 @@ section { position: relative; }
   padding-top: 20px; border-top: 1px solid var(--line);
   font-size: 13px; color: var(--fg-dim);
 }
-.about-meta-row { display: flex; justify-content: space-between; }
-.about-meta-row .k { text-transform: uppercase; letter-spacing: 2px; font-size: 11px; color: var(--fg-faint); }
-.about-meta-row .v { color: var(--fg); }
+.about-meta-row { display: flex; justify-content: space-between; gap: 18px; }
+.about-meta-row .k { flex: 0 0 auto; text-transform: uppercase; letter-spacing: 2px; font-size: 11px; color: var(--fg-faint); }
+.about-meta-row .v { flex: 1 1 auto; min-width: 0; text-align: right; color: var(--fg); }
 
 /* ─── What I Do (cinematic redesign) ───────────────────── */
 .whatido { display: grid; gap: 24px; grid-template-columns: 1fr; }
@@ -1239,6 +1239,7 @@ section { position: relative; }
   transform: scale(1.03);
   border-color: var(--accent);
 }
+.work-image picture { display: block; width: 100%; height: 100%; }
 .work-image img {
   width: 100%; height: 100%;
   object-fit: cover;
