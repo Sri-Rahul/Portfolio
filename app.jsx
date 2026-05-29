@@ -37,9 +37,9 @@ const CAREER = [
 { year: "2025", role: "AI Intern", org: "Edunet Foundation", period: "Jan 2025", hl: { v: "Diffusion", l: "ComfyUI · image gen" },
   body: "Explored image generation with Stable Diffusion and ComfyUI, fine-tuning diffusion models and refining the prompt engineering to produce high-quality outputs." },
 { year: "2025", role: "Web Developer Intern", org: "Texvo Developers", period: "Feb – May 2025", hl: { v: "Ordering", l: "Restaurant system" },
-  body: "Built a restaurant digital ordering system with kitchen, customer, and waiter dashboards plus order automation, working remotely across PHP, JS, MySQL, and Spring Boot." },
-{ year: "2025", role: "AI Intern", org: "Inbotiq", period: "May – Nov 2025", hl: { v: "RAG", l: "SEO automation" },
-  body: "Built the main platform with subscriptions and agent management and designed its database schema from scratch. Shipped a RAG-based SEO workflow on n8n that runs keyword research and auto-publishes blog posts with CTAs to WordPress." },
+  body: "Built a restaurant digital ordering system with kitchen, customer, and waiter dashboards plus order automation, working remotely across PHP, JS, and MySQL." },
+{ year: "2025", role: "AI Intern", org: "Inbotiq", period: "May – Nov 2025", hl: { v: "End-to-end", l: "SEO automation" },
+  body: "Built the main platform with subscriptions and agent management and designed its database schema from scratch. Shipped an end-to-end SEO workflow on n8n that runs keyword research and auto-publishes blog posts with RAG-driven CTAs to WordPress." },
 { year: "NOW", role: "Associate Technical Lead", org: "Inbotiq", period: "Nov 2025 – Present", hl: { v: "96%+", l: "Client-reported accuracy" },
   body: "Leading AI and voice products from research to deployment. Delivered Vanee, a node-graph voice agent with author-controlled phases. Deployed a trainable voice model, built and finetuned an LLM from scratch for structured-data extraction at Volza that reached 96%+ client-reported accuracy, and led the Razorpay payment integration on the main platform." }];
 

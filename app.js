@@ -70,17 +70,17 @@ const CAREER = [{
     v: "Ordering",
     l: "Restaurant system"
   },
-  body: "Built a restaurant digital ordering system with kitchen, customer, and waiter dashboards plus order automation, working remotely across PHP, JS, MySQL, and Spring Boot."
+  body: "Built a restaurant digital ordering system with kitchen, customer, and waiter dashboards plus order automation, working remotely across PHP, JS, and MySQL."
 }, {
   year: "2025",
   role: "AI Intern",
   org: "Inbotiq",
   period: "May – Nov 2025",
   hl: {
-    v: "RAG",
+    v: "End-to-end",
     l: "SEO automation"
   },
-  body: "Built the main platform with subscriptions and agent management and designed its database schema from scratch. Shipped a RAG-based SEO workflow on n8n that runs keyword research and auto-publishes blog posts with CTAs to WordPress."
+  body: "Built the main platform with subscriptions and agent management and designed its database schema from scratch. Shipped an end-to-end SEO workflow on n8n that runs keyword research and auto-publishes blog posts with RAG-driven CTAs to WordPress."
 }, {
   year: "NOW",
   role: "Associate Technical Lead",
