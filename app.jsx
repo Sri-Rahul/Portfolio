@@ -19,7 +19,7 @@ const WHAT_I_DO = [
 },
 {
   no: "02", title: "Develop",
-  desc: "Building production AI products from end to end. Voice agents, full-stack platforms, payment integrations, and the API layer that ties it all together.",
+  desc: "Building production AI products from end to end. Voice agents, full-stack platforms, payment integrations, and the APIs that connect them.",
   tags: ["Full-stack", "Next.js", "React", "Node.js", "FastAPI", "Voice agents", "Integrations"]
 },
 {
