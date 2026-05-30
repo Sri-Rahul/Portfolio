@@ -2031,3 +2031,57 @@ section { position: relative; }
   .work-progress { align-items: flex-start; }
   .work-box { padding: 40px 24px; }
 }
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Eye-candy upgrades: scroll-velocity skew, cursor context labels, timeline nodes
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Scroll-velocity skew — big headings lean with scroll speed (JS sets --svDeg,
+   which decays to 0 at rest so layout/triggers are unaffected). */
+.about-mega,
+.section-title,
+.career-title,
+.work-pin-header h2,
+.contact-headline {
+  transform: skewY(var(--svDeg, 0deg));
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-mega, .section-title, .career-title, .work-pin-header h2, .contact-headline { transform: none; }
+}
+
+/* Cursor context labels — the blob becomes a solid accent disc with a word. */
+.cursor { transition: width .35s ease, height .35s ease, opacity .25s, background .3s ease, box-shadow .3s ease; }
+.cursor-label {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+  font-weight: 600; color: var(--bg);
+  opacity: 0; transition: opacity .2s; pointer-events: none;
+}
+.cursor.is-labeled {
+  width: 74px; height: 74px;
+  mix-blend-mode: normal;
+  background: var(--accent);
+  box-shadow: 0 0 30px rgba(194, 164, 255, 0.55);
+}
+.cursor.is-labeled .cursor-label { opacity: 1; }
+
+/* Career timeline glow nodes — one per role, lights up as the scroll dot passes. */
+.ci-node {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid rgba(194, 164, 255, 0.4);
+  z-index: 3;
+  transition: background .45s, border-color .45s, box-shadow .45s, transform .45s;
+}
+.career-item.lit .ci-node {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 14px var(--accent), 0 0 30px rgba(194, 164, 255, 0.5);
+  transform: translate(-50%, -50%) scale(1.15);
+}
+.career-item.lit .career-item-num { color: var(--accent); }
+@media (max-width: 800px) { .ci-node { left: 8px; } }

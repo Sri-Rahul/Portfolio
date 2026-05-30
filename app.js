@@ -274,6 +274,7 @@ function Loader({
 /* ─── Cursor ─────────────────────────────────────────── */
 function Cursor() {
   const ref = useRef(null);
+  const labelRef = useRef(null);
   useEffect(() => {
     if (window.matchMedia("(hover: none)").matches) return;
     const c = ref.current;
@@ -294,9 +295,22 @@ function Cursor() {
       my = e.clientY;
     };
     window.addEventListener("mousemove", onMove);
-    const hoverables = "a, button, .wcard, .work-link, .tech-chip, [data-hover]";
-    const enter = () => c.classList.add("cursor-hover");
-    const leave = () => c.classList.remove("cursor-hover");
+
+    // Elements with data-cursor morph the blob into a labelled disc ("View",
+    // "Open", "Top", "Explore"); everything else just gets the hover swell.
+    const hoverables = "a, button, .wcard, .work-link, .tech-chip, [data-hover], [data-cursor]";
+    const enter = e => {
+      c.classList.add("cursor-hover");
+      const lbl = e.currentTarget && e.currentTarget.dataset ? e.currentTarget.dataset.cursor : "";
+      if (lbl && labelRef.current) {
+        labelRef.current.textContent = lbl;
+        c.classList.add("is-labeled");
+      }
+    };
+    const leave = () => {
+      c.classList.remove("cursor-hover");
+      c.classList.remove("is-labeled");
+    };
     const bind = el => {
       if (el.__hb) return;
       el.__hb = true;
@@ -318,7 +332,10 @@ function Cursor() {
   return /*#__PURE__*/React.createElement("div", {
     ref: ref,
     className: "cursor"
-  });
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "cursor-label",
+    ref: labelRef
+  }));
 }
 
 /* ─── Nav (glass pill with active section indicator) ─── */
@@ -820,7 +837,8 @@ function WhatIDo() {
     ref: el => cardsRef.current[i] = el
   }, /*#__PURE__*/React.createElement("div", {
     className: "wcard",
-    ref: el => tiltRef.current[i] = el
+    ref: el => tiltRef.current[i] = el,
+    "data-cursor": "Explore"
   }, /*#__PURE__*/React.createElement("div", {
     className: "wcard-big-num"
   }, c.no, /*#__PURE__*/React.createElement("span", {
@@ -970,6 +988,14 @@ function Career() {
           }
         });
       }
+      // Timeline node lights up as the scroll dot reaches this role and stays
+      // lit, so the line reads like a progress trail you fill in as you scroll.
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 58%",
+        onEnter: () => el.classList.add("lit"),
+        onLeaveBack: () => el.classList.remove("lit")
+      });
     });
   }, []);
   return /*#__PURE__*/React.createElement("section", {
@@ -1024,7 +1050,10 @@ function Career() {
     className: "career-item",
     key: i,
     ref: el => itemsRef.current[i] = el
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ci-node",
+    "aria-hidden": "true"
+  }), /*#__PURE__*/React.createElement("div", {
     className: "career-item-num"
   }, String(i + 1).padStart(2, "0"), " / ", String(CAREER.length).padStart(2, "0")), /*#__PURE__*/React.createElement("div", {
     className: "ci-meta"
@@ -1070,6 +1099,21 @@ function Work() {
     mm.add("(min-width: 1025px)", () => {
       const track = trackRef.current;
       const distance = track.scrollWidth - window.innerWidth + 40;
+
+      // Oversize the screenshots a touch so they can parallax-drift inside their
+      // frames as the rail scrolls, without ever exposing an edge.
+      const imgs = track.querySelectorAll(".work-image img");
+      imgs.forEach(img => {
+        img.style.transform = "translateX(0%) scale(1.16)";
+      });
+      const vw = window.innerWidth;
+      const applyParallax = () => {
+        imgs.forEach(img => {
+          const box = img.closest(".work-box").getBoundingClientRect();
+          const ratio = (box.left + box.width / 2 - vw / 2) / vw;
+          img.style.transform = `translateX(${(-ratio * 12).toFixed(2)}%) scale(1.16)`;
+        });
+      };
       const tween = gsap.to(track, {
         x: -distance,
         ease: "none",
@@ -1090,6 +1134,7 @@ function Work() {
               const idx = Math.min(count, Math.floor(self.progress * count) + 1);
               curRef.current.textContent = String(idx).padStart(2, "0");
             }
+            applyParallax();
           }
         }
       });
@@ -1103,7 +1148,12 @@ function Work() {
           start: "top 85%"
         }
       });
-      return () => tween.kill();
+      return () => {
+        tween.kill();
+        imgs.forEach(img => {
+          img.style.transform = "";
+        });
+      };
     });
     return () => mm.revert();
   }, []);
@@ -1142,7 +1192,8 @@ function Work() {
     ref: trackRef
   }, PROJECTS.map((p, i) => /*#__PURE__*/React.createElement("div", {
     className: `work-box wv-${i % 4 + 1}`,
-    key: p.n
+    key: p.n,
+    "data-cursor": "View"
   }, /*#__PURE__*/React.createElement("div", {
     className: "work-info"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1167,17 +1218,20 @@ function Work() {
     className: "work-action",
     href: p.github,
     target: "_blank",
-    rel: "noreferrer"
+    rel: "noreferrer",
+    "data-cursor": "Open"
   }, "\u2197 GitHub"), p.demo && /*#__PURE__*/React.createElement("a", {
     className: "work-action",
     href: p.demo,
     target: "_blank",
-    rel: "noreferrer"
+    rel: "noreferrer",
+    "data-cursor": "Open"
   }, "\u2197 Live demo"), p.pub && /*#__PURE__*/React.createElement("a", {
     className: "work-action is-pub",
     href: p.pub,
     target: "_blank",
-    rel: "noreferrer"
+    rel: "noreferrer",
+    "data-cursor": "Open"
   }, "\u2197 IEEE publication")))), /*#__PURE__*/React.createElement("div", {
     className: "work-image"
   }, /*#__PURE__*/React.createElement("picture", null, /*#__PURE__*/React.createElement("source", {
@@ -1514,6 +1568,7 @@ function Contact() {
     strength: 0.25
   }, /*#__PURE__*/React.createElement("a", {
     className: "cc-link",
+    "data-cursor": "Open",
     ref: el => linksRef.current[0] = el,
     href: `mailto:${PROFILE.email}`,
     "data-hover": PROFILE.email
@@ -1529,6 +1584,7 @@ function Contact() {
     strength: 0.25
   }, /*#__PURE__*/React.createElement("a", {
     className: "cc-link",
+    "data-cursor": "Open",
     ref: el => linksRef.current[1] = el,
     href: PROFILE.github,
     target: "_blank",
@@ -1542,6 +1598,7 @@ function Contact() {
     strength: 0.25
   }, /*#__PURE__*/React.createElement("a", {
     className: "cc-link",
+    "data-cursor": "Open",
     ref: el => linksRef.current[2] = el,
     href: PROFILE.linkedin,
     target: "_blank",
@@ -1579,6 +1636,7 @@ function Contact() {
   }, "/"), /*#__PURE__*/React.createElement("span", null, "All wrongs reserved")), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "ft-totop",
+    "data-cursor": "Top",
     onClick: () => {
       if (window.__lenis) window.__lenis.scrollTo(0, {
         duration: 1.8
@@ -1738,12 +1796,27 @@ function useLenisAndGSAP() {
     // Keep ScrollTrigger in sync with Lenis (so it advances on smooth-scroll wheels)
     lenis.on("scroll", ScrollTrigger.update);
 
+    // Scroll-velocity skew: a few big headings lean with scroll speed and ease
+    // back to 0 when you stop. The value decays to 0 at rest, so ScrollTrigger's
+    // cached element positions stay correct (the skew is purely transient).
+    const root = document.documentElement;
+    let targetSkew = 0,
+      curSkew = 0;
+    lenis.on("scroll", e => {
+      const v = e && typeof e.velocity === "number" ? e.velocity : 0;
+      targetSkew = Math.max(-2.4, Math.min(2.4, v * 0.11));
+    });
+
     // Drive Lenis with its own rAF loop — DO NOT pipe through gsap.ticker.
     // Piping through gsap.ticker breaks ScrollTrigger's ability to play tweens
     // on enter, leaving them stuck at progress 0.
     let rafId;
     const raf = time => {
       lenis.raf(time);
+      targetSkew *= 0.9; // ease the target back toward rest
+      curSkew += (targetSkew - curSkew) * 0.12; // smooth follow
+      if (Math.abs(curSkew) < 0.001) curSkew = 0;
+      root.style.setProperty("--svDeg", curSkew.toFixed(3) + "deg");
       rafId = requestAnimationFrame(raf);
     };
     rafId = requestAnimationFrame(raf);
