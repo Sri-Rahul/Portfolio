@@ -1810,13 +1810,20 @@ function useLenisAndGSAP() {
     // Drive Lenis with its own rAF loop — DO NOT pipe through gsap.ticker.
     // Piping through gsap.ticker breaks ScrollTrigger's ability to play tweens
     // on enter, leaving them stuck at progress 0.
-    let rafId;
+    let rafId,
+      lastSkewStr = "";
     const raf = time => {
       lenis.raf(time);
       targetSkew *= 0.9; // ease the target back toward rest
       curSkew += (targetSkew - curSkew) * 0.12; // smooth follow
       if (Math.abs(curSkew) < 0.001) curSkew = 0;
-      root.style.setProperty("--svDeg", curSkew.toFixed(3) + "deg");
+      // Only touch the DOM when the value actually changes, so an idle page
+      // doesn't recalc the headings' styles 60 times a second.
+      const s = curSkew.toFixed(3) + "deg";
+      if (s !== lastSkewStr) {
+        root.style.setProperty("--svDeg", s);
+        lastSkewStr = s;
+      }
       rafId = requestAnimationFrame(raf);
     };
     rafId = requestAnimationFrame(raf);

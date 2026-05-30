@@ -129,9 +129,11 @@
     // Animate
     const clock = new THREE.Clock();
     let rafId;
+    let paused = false;
     let scrollProgress = 0;            // 0..1 driven by scroll
     let scrollLerp = 0;
     function tick() {
+      if (paused) return;
       const t = clock.getElapsedTime();
 
       // Lerp scroll progress for smoothness
@@ -171,6 +173,23 @@
     }
     tick();
 
+    // Pause rendering when the landing is scrolled out of view or the tab is
+    // hidden — no point spinning the GPU at 60fps while the user reads the rest
+    // of the page. Resumes seamlessly when it comes back into view.
+    let inView = true, tabVisible = true;
+    const updatePause = () => {
+      const run = inView && tabVisible;
+      if (run && paused) { paused = false; tick(); }
+      else if (!run && !paused) { paused = true; cancelAnimationFrame(rafId); }
+    };
+    const io = new IntersectionObserver(
+      (entries) => { inView = entries[0].isIntersecting; updatePause(); },
+      { threshold: 0 }
+    );
+    io.observe(container);
+    const onVis = () => { tabVisible = !document.hidden; updatePause(); };
+    document.addEventListener("visibilitychange", onVis);
+
     // External setter so GSAP/ScrollTrigger can drive scene state
     window.__setSceneProgress = (p) => {
       scrollProgress = Math.max(0, Math.min(1, p));
@@ -178,6 +197,8 @@
 
     return () => {
       cancelAnimationFrame(rafId);
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVis);
       window.removeEventListener("mousemove", onMouse);
       window.removeEventListener("resize", onResize);
       window.__setSceneProgress = null;
