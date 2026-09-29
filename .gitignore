@@ -35,3 +35,6 @@ yarn-error.log*
 
 # local preview config
 .claude/
+
+# Impeccable decision-page session logs (transient)
+.impeccable/questions/

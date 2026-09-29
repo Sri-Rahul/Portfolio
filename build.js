@@ -1,6 +1,6 @@
 /* Precompile the JSX sources to plain JS using the same Babel engine the
    browser used to use (@babel/standalone, classic React runtime). Run this
-   after editing app.jsx or tweaks-panel.jsx:
+   after editing app.jsx:
 
      npm install --no-save @babel/standalone
      node build.js
@@ -8,7 +8,7 @@
 const fs = require("fs");
 const Babel = require("@babel/standalone");
 
-const FILES = ["tweaks-panel", "app"];
+const FILES = ["app"];
 for (const name of FILES) {
   const src = fs.readFileSync(name + ".jsx", "utf8");
   const { code } = Babel.transform(src, {

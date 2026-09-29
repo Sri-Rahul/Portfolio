@@ -3,8 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b080c" />
-  <title>Sri Rahul Namana · Developer & Designer</title>
+  <meta name="theme-color" content="#eef0ec" />
+  <title>Sri Rahul Namana · AI engineer and technical lead</title>
+  <meta name="description" content="Sri Rahul Namana designs AI systems and leads the teams that ship them: fine-tuned LLMs for data extraction, voice agents, and the platforms around them. Associate Technical Lead at Inbotiq, Nov 2025 – Sep 2026." />
+  <meta name="author" content="Sri Rahul Namana" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sri Rahul Namana · AI engineer and technical lead" />
+  <meta property="og:description" content="Designs AI systems and leads the teams that ship them: fine-tuned LLMs, voice agents, and the platforms around them." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sri Rahul Namana · AI engineer and technical lead" />
+  <meta name="twitter:description" content="Designs AI systems and leads the teams that ship them: fine-tuned LLMs, voice agents, and the platforms around them." />
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="icon" href="favicon.ico" sizes="32x32" />
@@ -14,17 +22,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- the treble clef only, from a music font (subset to one glyph) -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Music&text=%F0%9D%84%9E&display=block" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<!--
+THESIS: AI orchestration made literal: the portfolio is a conductor's full score where every part is one of his systems or his team, refusing the gradient hero, card grid and tech-logo wall.
+OWN-WORLD: Cool manuscript paper #eef0ec, engraving ink #121317, one conductor's blue pencil #2b46d9 for actions, cues and the playhead. Schibsted Grotesk heads, Old Standard score text, staves, rehearsal boxes, barlines, a fermata. Motion is the score's own: staves draw, notes strike, marks stamp, headings ink in. English only.
+STORY: Visitors meet a lead who architects AI and conducts a team of four, follow six roles as rehearsal marks, meet two clients, page through four builds, and email from the closing section.
+FIRST VIEWPORT: Name up to 96px upper left, instrumentation line, lede, blue "Get in touch"; right, a 3D conductor's view whose orchestra sections are his systems, cued by the pointer; across the bottom, a six-part score of the whole profile, 2022 to 2026, performed by a playhead that circles 99%.
+FORM: Orchestration, list position 6, the assigned roll. Seed 9b0a135b.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
   <div id="root"></div>
 
   <!-- Three.js -->
   <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
   <script src="three-scene.js"></script>
-  <script src="tech-bg.js"></script>
 
   <!-- GSAP + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -37,8 +54,7 @@
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 
-  <!-- Precompiled app (run build.js after editing the .jsx sources) -->
-  <script src="tweaks-panel.js"></script>
+  <!-- Precompiled app (run build.js after editing app.jsx) -->
   <script src="app.js"></script>
 </body>
 </html>
